@@ -157,13 +157,13 @@ var handleSizingResponse = function(e) {
 			alert("You have not configured ServiceNow Integration in Zoho Assist. Kindly contact your Administrator to configure ServiceNow in Zoho Assist.");
 			document.location.reload(true);
 			//context = createParaContent("You have not configured service-now Integration in Zoho Assist.","");
-            //$("#content").html(context+"<a href='https://www.zoho.com/assist/help/service-now.html' target='_blank'> Learn more.</a>");
+            //$("#content").html(context+"<a href='https://www.zoho.com/assist/help/servicenow.html' target='_blank'> Learn more.</a>");
 		}
 		else if(api_key===""){
 			GlideDialogWindow.get().destroy();
 			alert("Go to Zoho Assist Setup and complete your installation process.");
 			document.location.reload(true);
-			//context = createParaContent("It is found that Zoho Assist Api Key is empty in System Properties.","<a href='https://www.zoho.com/assist/help/service-now.html' target='_blank'> Learn more</a>");
+			//context = createParaContent("It is found that Zoho Assist Api Key is empty in System Properties.","<a href='https://www.zoho.com/assist/help/servicenow.html' target='_blank'> Learn more</a>");
             //$("#content").html(context);
 		}
 		else{
@@ -253,7 +253,7 @@ function createParaContent(p1,p2) {
         <sys_created_on>2017-11-14 10:05:45</sys_created_on>
         <sys_customer_update>true</sys_customer_update>
         <sys_id>69d6c3a3db96cb40360eda11cf961947</sys_id>
-        <sys_mod_count>6</sys_mod_count>
+        <sys_mod_count>9</sys_mod_count>
         <sys_name>AssistIFrameByAction</sys_name>
         <sys_package display_value="Assist" source="x_manen_assist">2ef5cf23db96cb40360eda11cf9619f3</sys_package>
         <sys_policy/>
@@ -261,6 +261,6 @@ function createParaContent(p1,p2) {
         <sys_scope display_value="Assist">2ef5cf23db96cb40360eda11cf9619f3</sys_scope>
         <sys_update_name>sys_ui_page_69d6c3a3db96cb40360eda11cf961947</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2017-11-14 10:35:17</sys_updated_on>
+        <sys_updated_on>2017-11-14 12:50:34</sys_updated_on>
     </sys_ui_page>
 </record_update>

@@ -126,11 +126,11 @@ var handleSizingResponse = function(e) {
             }
         }else if(ZAT_DETAILS.api_key===undefined){
 			context = createParaContent("You have not configured ServiceNow Integration in Zoho Assist.","Kindly contact your Administrator to configure ServiceNow in Zoho Assist.");
-            $("#content").html(context+"<a href='https://www.zoho.com/assist/help/service-now.html' target='_blank'> Learn more.</a>");
+            $("#content").html(context+"<a href='https://www.zoho.com/assist/help/servicenow.html' target='_blank'> Learn more.</a>");
 		}
 		else if(api_key===""){
 			context = createParaContent("Go to Zoho Assist Setup and complete your installation process.","");
-            $("#content").html(context+"<a href='https://www.zoho.com/assist/help/service-now.html' target='_blank'> Learn more</a>");
+            $("#content").html(context+"<a href='https://www.zoho.com/assist/help/servicenow.html' target='_blank'> Learn more</a>");
 		}
 		else{
             context = createParaContent("You're not part of Zoho Assist account that enables this integration.","Kindly contact your Administrator.");
@@ -220,7 +220,7 @@ function showError(data) {
         <sys_created_on>2017-11-14 10:01:25</sys_created_on>
         <sys_customer_update>true</sys_customer_update>
         <sys_id>694683a3db96cb40360eda11cf96190e</sys_id>
-        <sys_mod_count>8</sys_mod_count>
+        <sys_mod_count>11</sys_mod_count>
         <sys_name>AssistIFrame</sys_name>
         <sys_package display_value="Assist" source="x_manen_assist">2ef5cf23db96cb40360eda11cf9619f3</sys_package>
         <sys_policy/>
@@ -228,6 +228,6 @@ function showError(data) {
         <sys_scope display_value="Assist">2ef5cf23db96cb40360eda11cf9619f3</sys_scope>
         <sys_update_name>sys_ui_page_694683a3db96cb40360eda11cf96190e</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2017-11-14 10:35:00</sys_updated_on>
+        <sys_updated_on>2017-11-14 12:50:07</sys_updated_on>
     </sys_ui_page>
 </record_update>

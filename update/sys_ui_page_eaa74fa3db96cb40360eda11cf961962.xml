@@ -78,9 +78,9 @@ function getSystemProperties(){
 			</div>
 			<div style="display: table-cell;vertical-align: middle;height: 100%;">
 			<div style="float: left;margin-left: 20px;color: #333;">
-			<h2 style="margin: 10px 0 5px 0;font-weight: 400;">Zoho Assist</h2>
+			<h2 style="margin: 10px 0 5px 0;font-weight: 400;">ManageEngine Zoho Assist</h2>
 
-			<p style="font-size: 16px;line-height: 20px;margin-bottom: 10px;padding-right: 15px;">Instantly support customers located anywhere using Zoho Assist, a remote support and remote access software.$[SP]<a href="https://assist.zoho.com/help/zoho-desk.html" target="_blank">Learn more.</a></p>
+			<p style="font-size: 16px;line-height: 20px;margin-bottom: 10px;padding-right: 15px;">Instantly support customers located anywhere using ManageEngine Zoho Assist, a remote support and remote access software.$[SP]<a href="https://www.zoho.com/assist/help/servicenow.html" target="_blank">Learn more.</a></p>
 			</div>
 			</div>
 		</div>
@@ -131,7 +131,7 @@ function getSystemProperties(){
 
 						<ul>
 						<li><p>Get Zoho Assist app from $[SP]<strong>ServiceNow Store.</strong></p></li>
-						<li><p>Search for the $[SP]<strong>Zoho Assist Setup</strong>$[SP] module in Filter navigator.</p></li>
+						<li><p>Search for the $[SP]<strong>ManageEngine Zoho Assist Setup</strong>$[SP] module in Filter navigator.</p></li>
 						<li><p>Enter the $[SP]<strong>API key</strong>$[SP] provided in Zoho Assist.</p></li>
 						<li><p>Tick the checkbox if you have data center in $[SP]<strong>EU</strong>.</p></li>
 						</ul>
@@ -148,7 +148,7 @@ function getSystemProperties(){
         <sys_created_on>2017-11-14 10:06:40</sys_created_on>
         <sys_customer_update>true</sys_customer_update>
         <sys_id>eaa74fa3db96cb40360eda11cf961962</sys_id>
-        <sys_mod_count>6</sys_mod_count>
+        <sys_mod_count>11</sys_mod_count>
         <sys_name>AssistSetup</sys_name>
         <sys_package display_value="Assist" source="x_manen_assist">2ef5cf23db96cb40360eda11cf9619f3</sys_package>
         <sys_policy/>
@@ -156,6 +156,6 @@ function getSystemProperties(){
         <sys_scope display_value="Assist">2ef5cf23db96cb40360eda11cf9619f3</sys_scope>
         <sys_update_name>sys_ui_page_eaa74fa3db96cb40360eda11cf961962</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2017-11-14 10:35:52</sys_updated_on>
+        <sys_updated_on>2017-11-14 12:34:54</sys_updated_on>
     </sys_ui_page>
 </record_update>
