@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_properties">
+    <sys_properties action="INSERT_OR_UPDATE">
+        <choices/>
+        <description/>
+        <ignore_cache>false</ignore_cache>
+        <is_private>false</is_private>
+        <name>x_manen_assist.is_eu</name>
+        <read_roles/>
+        <suffix>is_eu</suffix>
+        <sys_class_name>sys_properties</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2017-11-14 10:19:00</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_id>f51a4727db96cb40360eda11cf96192c</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>x_manen_assist.is_eu</sys_name>
+        <sys_package display_value="Assist" source="x_manen_assist">2ef5cf23db96cb40360eda11cf9619f3</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Assist">2ef5cf23db96cb40360eda11cf9619f3</sys_scope>
+        <sys_update_name>sys_properties_f51a4727db96cb40360eda11cf96192c</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2017-11-14 10:30:49</sys_updated_on>
+        <type>boolean</type>
+        <value/>
+        <write_roles>admin,approval_admin,oauth_admin,itil_admin,password_reset_admin,user_admin,chat_admin,credential_admin</write_roles>
+    </sys_properties>
+    <sys_translated_text action="delete_multiple" query="documentkey=f51a4727db96cb40360eda11cf96192c"/>
+</record_update>
