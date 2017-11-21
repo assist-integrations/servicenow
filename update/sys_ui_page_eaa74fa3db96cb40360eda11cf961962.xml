@@ -9,7 +9,9 @@
 
 function showPreloader(){
 	document.getElementById("assist_installation").style.opacity=0.5;
-	updateSystemProperties();
+	setTimeout(function(){
+		updateSystemProperties();
+	},1000);
 }
 
 function hidePreloader(){
@@ -58,6 +60,7 @@ function getSystemProperties(){
 		$('#settings_is_eu').prop('checked', eu_flag);
 	}
 	document.getElementById("assist_installation").style.opacity=1.0;
+	$("#update_btn").val("Update");
 }
 ]]></client_script>
         <description/>
@@ -104,7 +107,7 @@ function getSystemProperties(){
 				</label>
 				<div style="clear: right;text-align: right;padding: 0;background: none;border-top: none;margin-bottom: 0;margin-top:15px;">
 					<button style="margin-left: 20px;background-color: #fff;border:none;border-radius: 2px;color: #1f8dd6;display: inline; font-size: 13px;padding: 0 20px; transition: border-color .15s ease-in-out 0s,box-shadow .15s ease-in-out 0s;height: 36px;border: 1px solid #1f8dd6;" onclick="goBack();">Cancel</button>
-					<button style="margin-left: 10px;background-color: #1f8dd6;border:none;border-radius: 2px;color: #fff;display: inline; font-size: 13px;padding: 0 20px; transition: border-color .15s ease-in-out 0s,box-shadow .15s ease-in-out 0s;height: 36px;" onclick="showPreloader();">Update</button>
+					<button style="margin-left: 10px;background-color: #1f8dd6;border:none;border-radius: 2px;color: #fff;display: inline; font-size: 13px;padding: 0 20px; transition: border-color .15s ease-in-out 0s,box-shadow .15s ease-in-out 0s;height: 36px;" onclick="showPreloader();" id="update_btn">Update</button>
 					<br />
 					<span style="clear:both;float:right;color:green;display:none;" id="success_msg">Updated Successfully.</span>
 				</div>
@@ -145,7 +148,7 @@ function getSystemProperties(){
         <sys_created_on>2017-11-14 10:06:40</sys_created_on>
         <sys_customer_update>true</sys_customer_update>
         <sys_id>eaa74fa3db96cb40360eda11cf961962</sys_id>
-        <sys_mod_count>14</sys_mod_count>
+        <sys_mod_count>17</sys_mod_count>
         <sys_name>AssistSetup</sys_name>
         <sys_package display_value="Assist" source="x_manen_assist">2ef5cf23db96cb40360eda11cf9619f3</sys_package>
         <sys_policy/>
@@ -153,6 +156,6 @@ function getSystemProperties(){
         <sys_scope display_value="Assist">2ef5cf23db96cb40360eda11cf9619f3</sys_scope>
         <sys_update_name>sys_ui_page_eaa74fa3db96cb40360eda11cf961962</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2017-11-21 05:13:33</sys_updated_on>
+        <sys_updated_on>2017-11-21 05:26:11</sys_updated_on>
     </sys_ui_page>
 </record_update>
