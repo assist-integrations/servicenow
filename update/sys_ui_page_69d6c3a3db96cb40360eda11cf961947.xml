@@ -253,14 +253,14 @@ function createParaContent(p1,p2) {
         <sys_created_on>2017-11-14 10:05:45</sys_created_on>
         <sys_customer_update>true</sys_customer_update>
         <sys_id>69d6c3a3db96cb40360eda11cf961947</sys_id>
-        <sys_mod_count>9</sys_mod_count>
+        <sys_mod_count>10</sys_mod_count>
         <sys_name>AssistIFrameByAction</sys_name>
         <sys_package display_value="Assist" source="x_manen_assist">2ef5cf23db96cb40360eda11cf9619f3</sys_package>
-        <sys_policy/>
+        <sys_policy>read</sys_policy>
         <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
         <sys_scope display_value="Assist">2ef5cf23db96cb40360eda11cf9619f3</sys_scope>
         <sys_update_name>sys_ui_page_69d6c3a3db96cb40360eda11cf961947</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2017-11-14 12:50:34</sys_updated_on>
+        <sys_updated_on>2017-11-24 08:07:08</sys_updated_on>
     </sys_ui_page>
 </record_update>

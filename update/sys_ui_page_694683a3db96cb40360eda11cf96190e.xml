@@ -4,14 +4,22 @@
         <category>general</category>
         <client_script><![CDATA[var case_id=null,mode=null,loginWindow=null,interval=null,domain="com";
 $(function() {
-	var customer_email=null,customer_name=null,ticket_no=null,ticket_subject=null,
-	technician_name=null,subdomain=null,department=null,
-	ZAT_DETAILS={},api_key=null;
-	case_id = $('#sys_id_input').val();
-	initializeVariables(case_id);
-    window.addEventListener('message', handleSizingResponse, true);
-	var iframeEle = document.getElementById("assist-integration-iframe");
-	iframeEle.src = "https://assist.zoho."+domain+"/assist-integration?service_name=ServiceNow";
+	if(!g_user.hasRole("admin") && !g_user.hasRole("x_manen_assist.admin") && !g_user.hasRole("x_manen_assist.user")){
+		$('#content').html("<div class='no-access-conatiner'><h2>You don't seem to have access privileges enabled for this organization</h2><p class='no-access-desc'>Contact your admin to assign relevant permissions.</p></div>");
+	}else{
+		var customer_email=null,customer_name=null,ticket_no=null,ticket_subject=null,
+		technician_name=null,subdomain=null,department=null,
+		ZAT_DETAILS={},api_key=null;
+		case_id = $('#sys_id_input').val();
+		initializeVariables(case_id);
+		if(customer_email!=null){
+			window.addEventListener('message', handleSizingResponse, true);
+			var iframeEle = document.getElementById("assist-integration-iframe");
+			iframeEle.src = "https://assist.zoho."+domain+"/assist-integration?service_name=ServiceNow";
+		}else{
+			$('#content').html("<div class='no-access-conatiner'><h2>Looks like you caller id missing in this incident.</h2><p class='no-access-desc'>Assign caller to this incident ot Start Remote Session or Screen Sharing.</p></div>");
+		}
+	}
 });
 
 function initializeVariables(sys_id) {
@@ -29,9 +37,10 @@ function initializeVariables(sys_id) {
 	var caller_record = new GlideRecord('sys_user');
 	caller_record.addQuery("sys_id", caller_id);
 	caller_record.query();
-	caller_record.next();
-	customer_email = caller_record.email;
-	customer_name = caller_record.name;
+	while(caller_record.next()){
+		customer_email = caller_record.email;
+		customer_name = caller_record.name;
+	}
 	// Getting Department Records
 	var department_record = new GlideRecord('cmn_department');
 	department_record.addQuery("sys_id", g_user.departmentID);
@@ -220,14 +229,14 @@ function showError(data) {
         <sys_created_on>2017-11-14 10:01:25</sys_created_on>
         <sys_customer_update>true</sys_customer_update>
         <sys_id>694683a3db96cb40360eda11cf96190e</sys_id>
-        <sys_mod_count>11</sys_mod_count>
+        <sys_mod_count>14</sys_mod_count>
         <sys_name>AssistIFrame</sys_name>
         <sys_package display_value="Assist" source="x_manen_assist">2ef5cf23db96cb40360eda11cf9619f3</sys_package>
-        <sys_policy/>
+        <sys_policy>read</sys_policy>
         <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
         <sys_scope display_value="Assist">2ef5cf23db96cb40360eda11cf9619f3</sys_scope>
         <sys_update_name>sys_ui_page_694683a3db96cb40360eda11cf96190e</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2017-11-14 12:50:07</sys_updated_on>
+        <sys_updated_on>2017-11-24 10:34:19</sys_updated_on>
     </sys_ui_page>
 </record_update>
