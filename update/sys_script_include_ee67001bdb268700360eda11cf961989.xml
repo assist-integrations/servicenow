@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_manen_assist.AssistRestAPIHandler</api_name>
+        <client_callable>true</client_callable>
+        <description/>
+        <name>AssistRestAPIHandler</name>
+        <script><![CDATA[var AssistRestAPIHandler = Class.create();
+AssistRestAPIHandler.prototype = Object.extendsObject(global.AbstractAjaxProcessor, {
+	
+	getSessionAPI : function(){
+		 try { 
+			 var incident_detail = this.getParameter('incident_detail');
+			 var incident_detail_JSON = new global.JSON().decode(incident_detail);
+			 
+			 var r = new sn_ws.RESTMessageV2('x_manen_assist.AssistSessionAPI', 'CreateSession');
+			 var token = incident_detail_JSON['api_key'];
+			 var domain = incident_detail_JSON['domain'];
+			 var customer_email = incident_detail_JSON['customer_email'];
+			 var customer_name = incident_detail_JSON['customer_name'];
+			 var mail_subject = incident_detail_JSON['mail_subject'];
+			 var mail_content = incident_detail_JSON['mail_content'];
+			 var agent_name = incident_detail_JSON['agent_name'];
+			 var department = incident_detail_JSON['department'];
+			 var case_id = incident_detail_JSON['case_id'];
+			 var type = incident_detail_JSON['type'];
+			 
+			 var mail_param = "";
+			 
+			 if(customer_name!=undefined){
+				 customer_name = "customer_name="+customer_name;
+				 mail_param+="&"+customer_name;
+			 }
+			 if(customer_email!=undefined){
+				 customer_email = "customer_email="+customer_email;
+				 mail_param+="&"+customer_email;
+			 }
+			 if(mail_subject!=undefined){
+				 mail_subject = "mail_subject="+mail_subject;
+				 mail_param+="&"+mail_subject;
+			 }
+			 if(mail_content!=undefined){
+				 mail_content = "mail_content="+mail_content;
+				 mail_param+="&"+mail_content;
+			 }
+			 if(agent_name!=undefined){
+				 agent_name = "agent_name="+agent_name;
+				 mail_param+="&"+agent_name;
+			 }
+			 if(department!=undefined){
+				 department = "department="+department;
+				 mail_param+="&"+department;
+			 }
+			 
+			 
+			 r.setStringParameter("token",token);
+			 r.setStringParameter("domain",domain);
+			 r.setStringParameter("case_id",case_id);
+			 r.setStringParameter("type",type);
+			 r.setStringParameterNoEscape("mail_param",mail_param);
+
+			 var response = r.execute();
+			 var responseBody = response.getBody();
+			 var httpStatus = response.getStatusCode();
+			 
+			 var msg = this.newItem('session_api');
+		     msg.setAttribute('value', responseBody);
+		 }
+		catch(ex) {
+			var message = ex.getMessage();
+			var msg = this.newItem('session_api');
+			msg.setAttribute('error', message);
+		}
+	},
+
+    type: 'AssistRestAPIHandler'
+});]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2017-11-25 11:44:00</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_id>ee67001bdb268700360eda11cf961989</sys_id>
+        <sys_mod_count>64</sys_mod_count>
+        <sys_name>AssistRestAPIHandler</sys_name>
+        <sys_package display_value="Assist" source="x_manen_assist">2ef5cf23db96cb40360eda11cf9619f3</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Assist">2ef5cf23db96cb40360eda11cf9619f3</sys_scope>
+        <sys_update_name>sys_script_include_ee67001bdb268700360eda11cf961989</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2017-11-25 16:42:20</sys_updated_on>
+    </sys_script_include>
+</record_update>

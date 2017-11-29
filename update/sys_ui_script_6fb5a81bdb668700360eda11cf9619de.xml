@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_ui_script">
+    <sys_ui_script action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <description/>
+        <global>false</global>
+        <name>x_manen_assist.AssistUtilScript</name>
+        <script><![CDATA[var assist_application_role_txt = "Looks like you don't have any assist application role in service now.";
+var assist_application_admin_role_txt = "Looks like you don't have assist application admin role in service now.";
+var assist_admin_contact_txt =  "Kinldy contact your Servicenow Administrator or Assist Application Administrator.";
+var start_session_txt = "Start a Zoho Assist session to support your customers in real-time.";
+var not_configured_txt = "You have not configured ServiceNow Integration in Zoho Assist.";
+var app_admin_role = "x_manen_assist.admin";
+var app_moderator_role = "x_manen_assist.moderator";
+var app_user_role = "x_manen_assist.user";
+var admin_role = "admin";
+var incident_detail = {};
+
+
+function getIncidentRecord(sys_id) {
+	// Technician Name using g_user
+	var technician_name = encodeURIComponent(g_user.fullName);
+	incident_detail.agent_name = technician_name;
+	incident_detail.case_id = sys_id;
+	
+	// Getting Incodent Records
+	var incident_record = new GlideRecord('incident');
+	incident_record.addQuery("sys_id",sys_id);
+	incident_record.query();
+	incident_record.next();
+	
+	if(incident_record.number!=undefined){
+		incident_detail.mail_subject = incident_record.number;
+	}
+	if(incident_record.short_description!=undefined){
+		incident_detail.mail_content = encodeURIComponent(incident_record.short_description);
+	}
+	
+	var caller_id = incident_record.caller_id;
+	// Getting Caller Records
+	if(caller_id!=undefined){
+		var caller_record = new GlideRecord('sys_user');
+		caller_record.addQuery("sys_id", caller_id);
+		caller_record.query();
+		caller_record.next();
+		incident_detail.customer_email = encodeURIComponent(caller_record.email);
+		incident_detail.customer_name = encodeURIComponent(caller_record.name);
+	}
+
+	// Getting Department Records
+	var department_record = new GlideRecord('cmn_department');
+	department_record.addQuery("sys_id", g_user.departmentID);
+	department_record.query();
+	department_record.next();
+	incident_detail.department = encodeURIComponent(department_record.description);
+	
+	
+	if(incident_detail.mail_content!=undefined && incident_detail.mail_content.length>250){
+		incident_detail.mail_content= incident_detail.mail_content.substr(0,200);
+	}
+	if(incident_detail.customer_name!=undefined && incident_detail.customer_name.length>25){
+		incident_detail.customer_name=incident_detail.customer_name.substr(0,25);
+	}
+	
+	// Getting system properties
+	var rec = new GlideRecord('sys_properties');
+	rec.addQuery('name', 'x_manen_assist.api_key');
+	rec.query();
+	if(rec.next()){
+		incident_detail.api_key = rec.value;
+	}
+	rec = new GlideRecord('sys_properties');
+	rec.addQuery('name', 'x_manen_assist.is_eu');
+	rec.query();
+	if(rec.next()){
+		var flag = rec.value;
+		if(flag){
+			incident_detail.domain = "eu";
+		}else{
+			incident_detail.domain = "com";
+		}
+	}
+
+	// Getting Subdomain from window location
+	var subdomain = window.location.host;
+	incident_detail.subdomain = subdomain.replace(".service-now.com","");
+}
+
+
+
+function restSessionAPIHandler(response) { 
+	var sessionResp = response.responseXML.getElementsByTagName('session_api');
+	for (var i = 0; i < sessionResp.length; i++) {
+	    var sessionJSONResp = JSON.parse(sessionResp[i].getAttribute('value'));
+		var successResp = sessionJSONResp.representation;
+		var error = sessionJSONResp.error;
+		console.log(successResp);
+		console.log(error);
+		if(successResp!=undefined){
+			var technician_url = successResp.technician_url;
+			var customer_url = successResp.customer_url;
+			var loginWindow = window.open(technician_url);
+			if(loginWindow==undefined || loginWindow==null){
+				alert("Please disable your browser's pop-up blocker to conduct remote support/screen sharing sessions.");
+			}
+		}else{
+			showErrorMessages(error);
+		}
+	}
+	
+}
+
+function getSessionAPI(type){
+	
+	incident_detail.type = type;
+	console.log(incident_detail);
+	
+	var inc = new GlideAjax("x_manen_assist.AssistRestAPIHandler");
+	inc.addParam("sysparm_name","getSessionAPI");
+	inc.addParam("incident_detail",JSON.stringify(incident_detail));
+	
+	inc.getXML(restSessionAPIHandler);
+}
+
+
+function createParaContent(p1,p2) {
+	var paraContent1 = "<span class=\"para-one\">"+p1+"</span><br />";
+	var paraContent2 = "<span class=\"para-two\">"+p2+"</span>";
+	return paraContent1+paraContent2;
+}
+
+function showErrorMessages(errResp) {
+    var error_data = createParaContent("Error Code:"+errResp.code,"Error Message:"+errResp.message);
+    $("#content").html(error_data);
+}
+
+
+function assistNoAccessPage(p1,p2){
+	var no_access_component = "<div class='no-access-conatiner'><h2>"+p1+"</h2><p class='no-access-desc'>"+p2+"</p></div>";
+	return no_access_component;
+}
+
+function hasAssistAdminRole(){
+	return g_user.hasRole(admin_role) || g_user.hasRole(app_admin_role) || g_user.hasRole(app_moderator_role);
+}
+
+function hasAssistRole(){
+	return g_user.hasRole(admin_role) || g_user.hasRole(app_admin_role) || g_user.hasRole(app_moderator_role) || g_user.hasRole(app_user_role) ;
+}]]></script>
+        <script_name>AssistUtilScript</script_name>
+        <sys_class_name>sys_ui_script</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2017-11-25 13:58:27</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_id>6fb5a81bdb668700360eda11cf9619de</sys_id>
+        <sys_mod_count>31</sys_mod_count>
+        <sys_name>x_manen_assist.AssistUtilScript</sys_name>
+        <sys_package display_value="Assist" source="x_manen_assist">2ef5cf23db96cb40360eda11cf9619f3</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Assist">2ef5cf23db96cb40360eda11cf9619f3</sys_scope>
+        <sys_update_name>sys_ui_script_6fb5a81bdb668700360eda11cf9619de</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2017-11-26 07:51:02</sys_updated_on>
+        <use_scoped_format>false</use_scoped_format>
+    </sys_ui_script>
+</record_update>

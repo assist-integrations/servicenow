@@ -2,160 +2,34 @@
 <record_update table="sys_ui_page">
     <sys_ui_page action="INSERT_OR_UPDATE">
         <category>general</category>
-        <client_script><![CDATA[var case_id=null,mode=null,loginWindow=null,interval=null,domain="com";
-$(function() {
-	if(!g_user.hasRole("admin") && !g_user.hasRole("x_manen_assist.admin") && !g_user.hasRole("x_manen_assist.user")){
-		$('#content').html("<div class='no-access-conatiner'><h2>You don't seem to have access privileges enabled for this organization</h2><p class='no-access-desc'>Contact your admin to assign relevant permissions.</p></div>");
+        <client_script><![CDATA[$(function() {
+	if(!hasAssistRole()){
+		var no_access_component = assistNoAccessPage(assist_application_role_txt,assist_admin_contact_txt);
+		$('#content').html(no_access_component);
 	}else{
-		var customer_email=null,customer_name=null,ticket_no=null,ticket_subject=null,
-		technician_name=null,subdomain=null,department=null,
-		ZAT_DETAILS={},api_key=null;
-		case_id = $('#sys_id_input').val();
-		initializeVariables(case_id);
-		if(customer_email!=null){
-			window.addEventListener('message', handleSizingResponse, true);
-			var iframeEle = document.getElementById("assist-integration-iframe");
-			iframeEle.src = "https://assist.zoho."+domain+"/assist-integration?service_name=ServiceNow";
+		var case_id = $('#sys_id_input').val();
+		getIncidentRecord(case_id);
+		var api_key = incident_detail.api_key;
+		if(api_key!=undefined){
+			var assist_ui_comp = getAssistUIComponent(start_session_txt,"");
+			$('#content').html(assist_ui_comp);
 		}else{
-			$('#content').html("<div class='no-access-conatiner'><h2>Looks like you caller id missing in this incident.</h2><p class='no-access-desc'>Assign caller to this incident ot Start Remote Session or Screen Sharing.</p></div>");
+			var not_configured = assistNoAccessPage(not_configured_txt,assist_admin_contact_txt);
+			$('#content').html(not_configured);
 		}
 	}
 });
 
-function initializeVariables(sys_id) {
-	// Technician Name using g_user
-	technician_name = g_user.fullName;
-	// Getting Incodent Records
-	var incident_record = new GlideRecord('incident');
-	incident_record.addQuery("sys_id",sys_id);
-	incident_record.query();
-	incident_record.next();
-	var caller_id = incident_record.caller_id;
-	ticket_no = incident_record.number;
-	ticket_subject = incident_record.short_description;
-	// Getting Caller Records
-	var caller_record = new GlideRecord('sys_user');
-	caller_record.addQuery("sys_id", caller_id);
-	caller_record.query();
-	while(caller_record.next()){
-		customer_email = caller_record.email;
-		customer_name = caller_record.name;
-	}
-	// Getting Department Records
-	var department_record = new GlideRecord('cmn_department');
-	department_record.addQuery("sys_id", g_user.departmentID);
-	department_record.query();
-	department_record.next();
-	department = department_record.description;
-	if(ticket_subject!==null && ticket_subject.length>250){
-		ticket_subject= ticket_subject.substr(0,200);
-	}
-	if(customer_name!==null && customer_name.length>25){
-		customer_name=customer_name.substr(0,25);
-	}
-	if(ticket_no!==null && ticket_no.length>25){
-		ticket_no=ticket_no.substr(0,25);
-	}
-	// Getting system properties
-	var rec = new GlideRecord('sys_properties');
-	rec.addQuery('name', 'x_manen_assist.api_key');
-	rec.query();
-	if(rec.next()){
-		api_key = rec.value;
-	}
-	rec = new GlideRecord('sys_properties');
-	rec.addQuery('name', 'x_manen_assist.is_eu');
-	rec.query();
-	if(rec.next()){
-		var flag = rec.value;
-		if(flag){
-			domain = "eu";
-		}
-	}
-	// Getting Subdomain from window location
-	subdomain = window.location.host;
-	subdomain = subdomain.replace(".service-now.com","");
+function refreshPage(){
+	window.location.reload(true);
 }
 
-var handleSizingResponse = function(e) { 
-    ZAT_DETAILS=e.data;
-    if(ZAT_DETAILS.signedIn===undefined){
-        return;
-    }
-	var context = null;
-    if(ZAT_DETAILS.signedIn){
-        if(ZAT_DETAILS.api_key===api_key){
-            if(ZAT_DETAILS.subdomain!==subdomain){
-                context = createParaContent("Your subdomain mismatches. Your API key is registered with '"+ZAT_DETAILS.subdomain+"' subdomain.","");
-                $("#content").html(context);
-                return;
-            }
-            if(ZAT_DETAILS.user.license_type==="FREE"){
-                context = createParaContent("Upgrade your Zoho Assist pricing plan to enjoy service-now service.","");
-                $("#content").html(context+"<input type=\"button\" class=\"start-btn\" value=\"Upgrade\" onclick=\"openPage('https://www.zoho.com/assist/pricing.html')\" />");
-                return;
-            }
-            if(!ZAT_DETAILS.enabled){
-                context = createParaContent("Integration with service-now has been disabled.","Kindly contact your Administrator.");
-                $("#content").html(context);
-                return;
-            }
-			if(ZAT_DETAILS.expires_in===0){
-				context = createParaContent("Integration with Zoho Assist has expired.","Kindly contact your Administrator to re-configure Service Now in Zoho Assist.");
-                $("#content").html(context);
-                return;
-			}
-            if(ZAT_DETAILS.user.remote_support_license.is_enabled){
-                if(ZAT_DETAILS.session!==undefined){
-                    if(ZAT_DETAILS.session.success!==undefined){
-                        session_id=ZAT_DETAILS.session.success.representation.session_id;
-                        loginWindow.location.href=ZAT_DETAILS.session.success.representation.technician_url;
-                    }else{
-                        loginWindow.close();
-                        var error=JSON.parse(ZAT_DETAILS.session.error);
-                        showError(error);
-                        if(interval!==null){
-                            clearInterval(interval);
-                            interval=null;
-                        }
-                        loginWindow=null;
-                    }
-                    delete ZAT_DETAILS['session'];
-                }
-                context = createParaContent("Start a Zoho Assist session to support your customers in real-time.", "");
-				var session_ui = context+"<form id=\"TheForm\" name=\"TheForm\" method=\"get\" target=\"TheWindow\"></form><input type=\"button\" class=\"start-btn\" value=\"Remote Support\" onclick=\"getSessionAPI('rs')\" />";
-				if(ZAT_DETAILS.user.remote_support_license.edition==="PROFESSIONAL"){
-					session_ui = session_ui+ "<input type=\"button\" class=\"start-btn\" value=\"Screen Sharing\" onclick=\"getSessionAPI('dm')\" />";
-				}
-                $("#content").html(session_ui);
-            }
-            else{
-                context = createParaContent("You do not have the permission to initiate a session.","Kindly contact your Administrator.");
-                $("#content").html(context);
-            }
-        }else if(ZAT_DETAILS.api_key===undefined){
-			context = createParaContent("You have not configured ServiceNow Integration in Zoho Assist.","Kindly contact your Administrator to configure ServiceNow in Zoho Assist.");
-            $("#content").html(context+"<a href='https://www.zoho.com/assist/help/servicenow.html' target='_blank'> Learn more.</a>");
-		}
-		else if(api_key===""){
-			context = createParaContent("Go to Zoho Assist Setup and complete your installation process.","");
-            $("#content").html(context+"<a href='https://www.zoho.com/assist/help/servicenow.html' target='_blank'> Learn more</a>");
-		}
-		else{
-            context = createParaContent("You're not part of Zoho Assist account that enables this integration.","Kindly contact your Administrator.");
-            $("#content").html(context);
-        }
-    }
-    else{
-        context = createParaContent("Start a session to get connected to your remote customers instantly.", "");
-        $("#content").html(context+"<input type=\"button\" class=\"start-btn\" value=\"Remote Support\" onclick=\"showLoginPage()\" /><input type=\"button\" class=\"start-btn\" value=\"Screen Sharing\" onclick=\"showLoginPage()\" />");
-    }
-	
-	if(ZAT_DETAILS.expires_in!==undefined){
-		var content = $('#content').html();
-		$('#content').html(content+"<br ><span class=\"para-three\">For security reasons, this integration will expire in <b>"+ZAT_DETAILS.expires_in+" </b> day(s).</span>");
-	}
-};
+function getAssistUIComponent(p1,p2){
+	var remote_support_btn = getActionButton("Remote Support","rs");
+	var screen_sharing_btn = getActionButton("Screen Sharing","dm");
+	var assist_text = createParaContent(p1,p2);
+	return assist_text+remote_support_btn+screen_sharing_btn;
+}
 
 function createParaContent(p1,p2) {
 	var paraContent1 = "<span class=\"para-one\">"+p1+"</span><br />";
@@ -163,64 +37,29 @@ function createParaContent(p1,p2) {
 	return paraContent1+paraContent2;
 }
 
-function getSessionAPI(type){
-    var iframeVar=document.getElementById("assist-integration-iframe");
-    var data={
-        service_id: 'ServiceNow',
-        customer_email: customer_email,
-        customer_name: customer_name,
-        mail_subject: ticket_no,
-        mail_content: ticket_subject,
-        agent_name: technician_name,
-        department: department,
-		case_id: case_id,
-		type: type
-    };
-    var session_details={
-        session: data
-    };
-    iframeVar.contentWindow.postMessage(session_details,'*');
-    loginWindow= window.open("","_blank");
-}
-function openLoginPage(){
-    loginWindow = window.open("https://assist.zoho."+domain+"/html/blank.html","_blank","toolbar=yes,scrollbars=yes,resizable=yes,top=150,left=350,width=800,height=600");
-    if(interval!==null){
-        clearInterval(interval);
-        interval=null;
-    }
-    interval = setInterval(function(){
-        if(loginWindow.closed){
-            clearInterval(interval);
-            loginWindow=null;
-            document.location.reload(true);
-        }
-    },2000);
-}
-
-function showLoginPage(){
-    var context = createParaContent("Looks like you haven't signed in to your account.","Please Login or Create an account.");
-    $("#content").html(context+"<br /><input type=\"button\" class=\"start-btn\" value=\"Log In\" onclick=\"openLoginPage()\" />");
-}
-
-function openPage(pageUrl){
-	window.open(pageUrl,"_blank");
-}
-
-function showError(data) {
-    var error_data = createParaContent("Error Code:"+data.error.code,"Error Message:"+data.error.message);
-    $("#content").html(error_data);
+function getActionButton(val,type){
+	return "<input type=\"button\" class=\"start-btn\" value=\""+val+"\" onclick=\"getSessionAPI('"+type+"')\" />";
 }]]></client_script>
         <description/>
         <direct>false</direct>
         <endpoint>x_manen_assist_AssistIFrame.do</endpoint>
         <html><![CDATA[<?xml version="1.0" encoding="utf-8" ?>
 <j:jelly trim="false" xmlns:j="jelly:core" xmlns:g="glide" xmlns:j2="null" xmlns:g2="null">
+	
+	<!-- Including JS and CSS files -->
+	<g:include_script src="x_manen_assist.AssistUtilScript.jsdbx" />
+	<g:include_script src="x_manen_assist.jquery.jsdbx" />
+	
+	<!-- Including CSS files -->
 	<link rel="stylesheet" href="https://sites.zoho.com/webfonts?family=Lato:300,300i,400,400i,600,600i,700,700i,900,900i"></link>
 	<link href="1d7b8f67db96cb40360eda11cf961961.cssdbx" rel="stylesheet" type="text/css"></link>
-	<g:include_script src="x_manen_assist.jquery.jsdbx" />
+	
+	<!-- Getting Sys ID -->
 	<input type="hidden" id="sys_id_input" name="sys_id_input" value="$[RP.getParameterValue('sysparm_id')]" />
+	
+	<!-- Assist UI Componenet -->
 	<div id="content"><div class="preloader"></div></div>
-	<iframe id="assist-integration-iframe" width="0%" height="0%" style="border:0px;"></iframe>
+	<div style="color:blue;float:right;" onclick="refreshPage();"><u>Refresh</u></div>
 </j:jelly>]]></html>
         <name>AssistIFrame</name>
         <processing_script/>
@@ -229,7 +68,7 @@ function showError(data) {
         <sys_created_on>2017-11-14 10:01:25</sys_created_on>
         <sys_customer_update>true</sys_customer_update>
         <sys_id>694683a3db96cb40360eda11cf96190e</sys_id>
-        <sys_mod_count>14</sys_mod_count>
+        <sys_mod_count>86</sys_mod_count>
         <sys_name>AssistIFrame</sys_name>
         <sys_package display_value="Assist" source="x_manen_assist">2ef5cf23db96cb40360eda11cf9619f3</sys_package>
         <sys_policy>read</sys_policy>
@@ -237,6 +76,6 @@ function showError(data) {
         <sys_scope display_value="Assist">2ef5cf23db96cb40360eda11cf9619f3</sys_scope>
         <sys_update_name>sys_ui_page_694683a3db96cb40360eda11cf96190e</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2017-11-24 10:34:19</sys_updated_on>
+        <sys_updated_on>2017-11-26 07:53:46</sys_updated_on>
     </sys_ui_page>
 </record_update>
