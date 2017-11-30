@@ -8,10 +8,12 @@
 		$('#content').html(no_access_component);
 	}else{
 		var case_id = $('#sys_id_input').val();
+		var source = $('#source_from').val();
+		incident_detail.source = source;
 		getIncidentRecord(case_id);
 		var api_key = incident_detail.api_key;
 		if(api_key!=undefined){
-			var assist_ui_comp = getAssistUIComponent(start_session_txt,"");
+			var assist_ui_comp = getAssistUIComponent();
 			$('#content').html(assist_ui_comp);
 		}else{
 			var not_configured = assistNoAccessPage(not_configured_txt,assist_admin_contact_txt);
@@ -22,13 +24,6 @@
 
 function refreshPage(){
 	window.location.reload(true);
-}
-
-function getAssistUIComponent(p1,p2){
-	var remote_support_btn = getActionButton("Remote Support","rs");
-	var screen_sharing_btn = getActionButton("Screen Sharing","dm");
-	var assist_text = createParaContent(p1,p2);
-	return assist_text+remote_support_btn+screen_sharing_btn;
 }
 
 function createParaContent(p1,p2) {
@@ -47,8 +42,8 @@ function getActionButton(val,type){
 <j:jelly trim="false" xmlns:j="jelly:core" xmlns:g="glide" xmlns:j2="null" xmlns:g2="null">
 	
 	<!-- Including JS and CSS files -->
-	<g:include_script src="x_manen_assist.AssistUtilScript.jsdbx" />
 	<g:include_script src="x_manen_assist.jquery.jsdbx" />
+	<g:include_script src="x_manen_assist.AssistUtilScript.jsdbx" />
 	
 	<!-- Including CSS files -->
 	<link rel="stylesheet" href="https://sites.zoho.com/webfonts?family=Lato:300,300i,400,400i,600,600i,700,700i,900,900i"></link>
@@ -56,6 +51,7 @@ function getActionButton(val,type){
 	
 	<!-- Getting Sys ID -->
 	<input type="hidden" id="sys_id_input" name="sys_id_input" value="$[RP.getParameterValue('sysparm_id')]" />
+	<input type="hidden" id="source_from" name="source_from" value="$[RP.getParameterValue('src')]" />
 	
 	<!-- Assist UI Componenet -->
 	<div id="content"><div class="preloader"></div></div>
@@ -68,7 +64,7 @@ function getActionButton(val,type){
         <sys_created_on>2017-11-14 10:01:25</sys_created_on>
         <sys_customer_update>true</sys_customer_update>
         <sys_id>694683a3db96cb40360eda11cf96190e</sys_id>
-        <sys_mod_count>86</sys_mod_count>
+        <sys_mod_count>91</sys_mod_count>
         <sys_name>AssistIFrame</sys_name>
         <sys_package display_value="Assist" source="x_manen_assist">2ef5cf23db96cb40360eda11cf9619f3</sys_package>
         <sys_policy>read</sys_policy>
@@ -76,6 +72,6 @@ function getActionButton(val,type){
         <sys_scope display_value="Assist">2ef5cf23db96cb40360eda11cf9619f3</sys_scope>
         <sys_update_name>sys_ui_page_694683a3db96cb40360eda11cf96190e</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2017-11-26 07:53:46</sys_updated_on>
+        <sys_updated_on>2017-11-30 08:04:18</sys_updated_on>
     </sys_ui_page>
 </record_update>

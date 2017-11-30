@@ -2,9 +2,9 @@
 <record_update table="sys_properties">
     <sys_properties action="INSERT_OR_UPDATE">
         <choices/>
-        <description>OAuth Api Key of Zoho Assist Organization</description>
+        <description>Api Key:</description>
         <ignore_cache>false</ignore_cache>
-        <is_private>true</is_private>
+        <is_private>false</is_private>
         <name>x_manen_assist.api_key</name>
         <read_roles>x_manen_assist.admin,admin,x_manen_assist.moderator</read_roles>
         <suffix>api_key</suffix>
@@ -13,7 +13,7 @@
         <sys_created_on>2017-11-14 10:16:29</sys_created_on>
         <sys_customer_update>true</sys_customer_update>
         <sys_id>b6794fe3db96cb40360eda11cf9619f6</sys_id>
-        <sys_mod_count>38</sys_mod_count>
+        <sys_mod_count>45</sys_mod_count>
         <sys_name>x_manen_assist.api_key</sys_name>
         <sys_package display_value="Assist" source="x_manen_assist">2ef5cf23db96cb40360eda11cf9619f3</sys_package>
         <sys_policy/>
@@ -21,9 +21,9 @@
         <sys_scope display_value="Assist">2ef5cf23db96cb40360eda11cf9619f3</sys_scope>
         <sys_update_name>sys_properties_b6794fe3db96cb40360eda11cf9619f6</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2017-11-26 08:32:33</sys_updated_on>
+        <sys_updated_on>2017-11-30 08:02:30</sys_updated_on>
         <type>string</type>
-        <value>9b0a4ae1888a3d64144bac5806cae016</value>
+        <value/>
         <write_roles>admin,x_manen_assist.admin,x_manen_assist.moderator</write_roles>
     </sys_properties>
     <sys_translated_text action="delete_multiple" query="documentkey=b6794fe3db96cb40360eda11cf9619f6"/>

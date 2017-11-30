@@ -26,6 +26,7 @@ AssistRestAPIHandler.prototype = Object.extendsObject(global.AbstractAjaxProcess
 			 var department = incident_detail_JSON['department'];
 			 var case_id = incident_detail_JSON['case_id'];
 			 var type = incident_detail_JSON['type'];
+			 var src = incident_detail_JSON['source'];
 			 
 			 var mail_param = "";
 			 
@@ -67,11 +68,13 @@ AssistRestAPIHandler.prototype = Object.extendsObject(global.AbstractAjaxProcess
 			 
 			 var msg = this.newItem('session_api');
 		     msg.setAttribute('value', responseBody);
+			 msg.setAttribute('source', src);
 		 }
 		catch(ex) {
 			var message = ex.getMessage();
 			var msg = this.newItem('session_api');
-			msg.setAttribute('error', message);
+			msg.setAttribute('value', message);
+			msg.setAttribute('source', 'ui_action');
 		}
 	},
 
@@ -82,7 +85,7 @@ AssistRestAPIHandler.prototype = Object.extendsObject(global.AbstractAjaxProcess
         <sys_created_on>2017-11-25 11:44:00</sys_created_on>
         <sys_customer_update>true</sys_customer_update>
         <sys_id>ee67001bdb268700360eda11cf961989</sys_id>
-        <sys_mod_count>64</sys_mod_count>
+        <sys_mod_count>67</sys_mod_count>
         <sys_name>AssistRestAPIHandler</sys_name>
         <sys_package display_value="Assist" source="x_manen_assist">2ef5cf23db96cb40360eda11cf9619f3</sys_package>
         <sys_policy>read</sys_policy>
@@ -90,6 +93,6 @@ AssistRestAPIHandler.prototype = Object.extendsObject(global.AbstractAjaxProcess
         <sys_scope display_value="Assist">2ef5cf23db96cb40360eda11cf9619f3</sys_scope>
         <sys_update_name>sys_script_include_ee67001bdb268700360eda11cf961989</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2017-11-25 16:42:20</sys_updated_on>
+        <sys_updated_on>2017-11-30 06:33:49</sys_updated_on>
     </sys_script_include>
 </record_update>

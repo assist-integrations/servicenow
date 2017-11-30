@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_properties_category">
+    <sys_properties_category action="INSERT_OR_UPDATE">
+        <name>Assist System Category</name>
+        <sys_class_name>sys_properties_category</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2017-11-30 07:03:16</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_id>6a867cb0db364700360eda11cf9619de</sys_id>
+        <sys_mod_count>23</sys_mod_count>
+        <sys_name>Assist System Category</sys_name>
+        <sys_package display_value="Assist" source="x_manen_assist">2ef5cf23db96cb40360eda11cf9619f3</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Assist">2ef5cf23db96cb40360eda11cf9619f3</sys_scope>
+        <sys_update_name>sys_properties_category_6a867cb0db364700360eda11cf9619de</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2017-11-30 07:43:52</sys_updated_on>
+        <title><![CDATA[<div style="margin-top: 30px; margin-bottom: 35px; padding-bottom: 0; margin-left: 30px;">
+<div style="height: 60px; width: 60px; float: left;"><span style="font-family: symbol;"><img style="float: left;" title="AssistIcon" src="sys_attachment.do?sys_id&#61;19e678f0db364700360eda11cf961918" alt="AssistIcon" width="73" height="73" align="baseline" border="" hspace="" vspace="" /></span></div>
+<div style="display: table-cell; vertical-align: middle; height: 100%; text-align: left;">
+<div style="float: left; margin-left: 20px; color: #333;">
+<h2 style="margin: 10px 0 5px 0; font-weight: 400;"><span style="font-family: symbol;"><span style="font-size: 24pt;"><strong>ManageEngine Zoho Assist</strong></span></span></h2>
+<p style="font-size: 16px; line-height: 20px; margin-bottom: 10px; padding-right: 15px;"><span style="font-family: symbol;">I</span><span style="font-size: 12pt; font-family: symbol;">nstantly support customers located anywhere using Zoho Assist, a remote support and remote access software.</span>  <a href="https://www.zoho.com/assist/help/servicenow.html" target="_blank" rel="nofollow">Learn more.</a></p>
+</div>
+</div>
+</div>
+<div style="clear: both; float: left; text-align: left; margin-left: 50px;">
+<h3 style="font-size: 14px; line-height: 1.5; margin: 0 0 20px; color: #000;"><strong><span style="font-family: symbol; font-size: 12pt;">STEPS TO INSTALL</span></strong></h3>
+<div>
+<h4 style="line-height: 1.5; margin: 0 0 20px; color: #000;"><strong><span style="font-family: symbol; font-size: 10pt;">To Configure Servicenow</span></strong></h4>
+<ul><li>
+<p><span style="font-family: symbol; font-size: 10pt;"><a href="https://assist.zoho.com" rel="nofollow">Log in</a> or <a href="https://www.zoho.com/assist/signup.html?src&#61;ServiceNow" rel="nofollow">Sign Up </a> to Zoho Assist.</span></p>
+</li><li>
+<p><span style="font-family: symbol; font-size: 10pt;">Navigate to <strong>Settings</strong></span></p>
+</li><li>
+<p><span style="font-family: symbol; font-size: 10pt;">In settings, goto <strong>General -&gt; Integrations</strong></span></p>
+</li><li>
+<p><span style="font-family: symbol; font-size: 10pt;">Once the tab opens, click <strong>Servicenow -&gt; CONFIGURE</strong></span></p>
+</li><li>
+<p><span style="font-family: symbol; font-size: 10pt;">Enter the sub-domain and click <strong>ENABLE</strong></span></p>
+</li><li>
+<p><span style="font-family: symbol; font-size: 10pt;">Now enter your Servicenow credentials and click <strong>Sign In</strong></span></p>
+</li><li>
+<p><span style="font-family: symbol; font-size: 10pt;">Once you sign in you will be provided with an <strong>API Key</strong></span></p>
+</li></ul>
+<h4 style="line-height: 1.5; margin: 40px 0 20px; color: #000;"><strong><span style="font-family: symbol; font-size: 10pt;">To Install Zoho Assist</span></strong></h4>
+<ul><li>
+<p><span style="font-family: symbol; font-size: 10pt;">Get Zoho Assist app from <strong>ServiceNow Store.</strong></span></p>
+</li><li>
+<p><span style="font-family: symbol; font-size: 10pt;">Search for the <strong>MangeEngine Zoho Assist Setup</strong> module in Filter navigator.</span></p>
+</li><li>
+<p><span style="font-family: symbol; font-size: 10pt;">Enter the <strong>API key</strong> provided in Zoho Assist.</span></p>
+</li><li>
+<p><span style="font-family: symbol; font-size: 10pt;">Check  <strong>Are you using Zoho Assist EU?</strong>, if you have account on <strong>assist.zoho.eu</strong>.</span></p>
+</li></ul>
+<p><span style="font-family: symbol;"> </span></p>
+<p><span style="font-family: symbol;"> </span></p>
+</div>
+</div>
+<p style="text-align: left;"><span style="font-family: symbol;"> </span></p>]]></title>
+    </sys_properties_category>
+    <sys_translated_text action="delete_multiple" query="documentkey=6a867cb0db364700360eda11cf9619de"/>
+</record_update>

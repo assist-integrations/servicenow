@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <record_update sys_domain="global" table="sys_ui_action">
     <sys_ui_action action="INSERT_OR_UPDATE">
-        <action_name>Assist Remote Support</action_name>
+        <action_name>ZohoAssistUIAction</action_name>
         <active>true</active>
         <client>true</client>
         <comments/>
@@ -18,7 +18,7 @@
         <list_context_menu>false</list_context_menu>
         <list_link>false</list_link>
         <list_save_with_form_button>false</list_save_with_form_button>
-        <name>Remote Support</name>
+        <name>Zoho Assist</name>
         <onclick>startSession()</onclick>
         <order>1</order>
         <script><![CDATA[function startSession() {
@@ -26,9 +26,9 @@
 	var dialog = new GlideDialogWindow("x_manen_assist_AssistIFrameByAction");
 	dialog.setTitle("Zoho Assist");
 	var type = "rs";
-	dialog.setPreference("sysparm_type", type);
 	dialog.setPreference("sysparm_id", sysId);
-	dialog.setSize(300,200);
+	dialog.setPreference("from", "ui_action");
+	dialog.setSize(500,400);
 	dialog.removeCloseDecoration();
 	dialog.render();
 }]]></script>
@@ -43,8 +43,8 @@
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>45b8c7e3db96cb40360eda11cf96193d</sys_id>
-        <sys_mod_count>50</sys_mod_count>
-        <sys_name>Remote Support</sys_name>
+        <sys_mod_count>59</sys_mod_count>
+        <sys_name>Zoho Assist</sys_name>
         <sys_overrides/>
         <sys_package display_value="Assist" source="x_manen_assist">2ef5cf23db96cb40360eda11cf9619f3</sys_package>
         <sys_policy>read</sys_policy>
@@ -52,7 +52,7 @@
         <sys_scope display_value="Assist">2ef5cf23db96cb40360eda11cf9619f3</sys_scope>
         <sys_update_name>sys_ui_action_45b8c7e3db96cb40360eda11cf96193d</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2017-11-26 07:32:11</sys_updated_on>
+        <sys_updated_on>2017-11-30 08:03:08</sys_updated_on>
         <table>incident</table>
         <ui11_compatible>false</ui11_compatible>
         <ui16_compatible>false</ui16_compatible>

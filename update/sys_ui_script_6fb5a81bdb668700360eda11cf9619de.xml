@@ -8,7 +8,8 @@
         <script><![CDATA[var assist_application_role_txt = "Looks like you don't have any assist application role in service now.";
 var assist_application_admin_role_txt = "Looks like you don't have assist application admin role in service now.";
 var assist_admin_contact_txt =  "Kinldy contact your Servicenow Administrator or Assist Application Administrator.";
-var start_session_txt = "Start a Zoho Assist session to support your customers in real-time.";
+var remote_support_txt = "Start a session to get connected to your remote customers instantly.";
+var scree_sharing_txt = "Start a session to share your computer screen for demo or training.";
 var not_configured_txt = "You have not configured ServiceNow Integration in Zoho Assist.";
 var app_admin_role = "x_manen_assist.admin";
 var app_moderator_role = "x_manen_assist.moderator";
@@ -91,11 +92,11 @@ function getIncidentRecord(sys_id) {
 function restSessionAPIHandler(response) { 
 	var sessionResp = response.responseXML.getElementsByTagName('session_api');
 	for (var i = 0; i < sessionResp.length; i++) {
+		console.log(sessionResp[i].getAttribute('value'));
 	    var sessionJSONResp = JSON.parse(sessionResp[i].getAttribute('value'));
+		var source = sessionResp[i].getAttribute('source');
 		var successResp = sessionJSONResp.representation;
 		var error = sessionJSONResp.error;
-		console.log(successResp);
-		console.log(error);
 		if(successResp!=undefined){
 			var technician_url = successResp.technician_url;
 			var customer_url = successResp.customer_url;
@@ -106,13 +107,18 @@ function restSessionAPIHandler(response) {
 		}else{
 			showErrorMessages(error);
 		}
+		if(source=='ui_action'){
+			console.log("Refresh");
+			//GlideDialogWindow.get().destroy();
+			window.location.reload(true);
+		}
 	}
 	
 }
 
-function getSessionAPI(type){
+function getSessionAPI(){
 	
-	incident_detail.type = type;
+	incident_detail.type = $("#content input[name='remote_option']:checked"). val();
 	console.log(incident_detail);
 	
 	var inc = new GlideAjax("x_manen_assist.AssistRestAPIHandler");
@@ -146,6 +152,31 @@ function hasAssistAdminRole(){
 
 function hasAssistRole(){
 	return g_user.hasRole(admin_role) || g_user.hasRole(app_admin_role) || g_user.hasRole(app_moderator_role) || g_user.hasRole(app_user_role) ;
+}
+
+function changeRemoteOption(option){
+    if(option=='dm'){
+        $("#content .para-one").html(scree_sharing_txt);
+    }else if(option=='rs'){
+        $("#content .para-one").html(remote_support_txt);
+    }
+}
+
+function startBtn(){
+	var btn = "<div class=\"btn-section\"><form id=\"TheForm\" name=\"TheForm\" method=\"get\" target=\"TheWindow\"></form><input type=\"button\" class=\"start-btn\" id=\"start-btn\" value=\"Start Session\" onclick=\"getSessionAPI()\" /></div>";
+	var context = createParaContent(remote_support_txt, "");
+	return context+btn;
+}
+
+function radioBtn(){
+	var remoteOption = "<label class=\"rs-text\"><span class=\"rs-radio\"><input type=\"radio\" name=\"remote_option\" id=\"rs_radio\" checked onclick=\"changeRemoteOption('rs');\" value=\"rs\"  /></span>Access Remote Screen</label><label class=\"rs-text\"><span class=\"rs-radio\"><input type=\"radio\" name=\"remote_option\" id=\"dm_radio\" onclick=\"changeRemoteOption('dm');\" value=\"dm\" /></span>Share My Screen</label><br />";
+	return remoteOption;
+}
+
+function getAssistUIComponent(){
+	var radio_btn_choice = radioBtn();
+	var remote_start_btn = startBtn();
+	return radio_btn_choice+remote_start_btn;
 }]]></script>
         <script_name>AssistUtilScript</script_name>
         <sys_class_name>sys_ui_script</sys_class_name>
@@ -153,7 +184,7 @@ function hasAssistRole(){
         <sys_created_on>2017-11-25 13:58:27</sys_created_on>
         <sys_customer_update>true</sys_customer_update>
         <sys_id>6fb5a81bdb668700360eda11cf9619de</sys_id>
-        <sys_mod_count>31</sys_mod_count>
+        <sys_mod_count>50</sys_mod_count>
         <sys_name>x_manen_assist.AssistUtilScript</sys_name>
         <sys_package display_value="Assist" source="x_manen_assist">2ef5cf23db96cb40360eda11cf9619f3</sys_package>
         <sys_policy/>
@@ -161,7 +192,7 @@ function hasAssistRole(){
         <sys_scope display_value="Assist">2ef5cf23db96cb40360eda11cf9619f3</sys_scope>
         <sys_update_name>sys_ui_script_6fb5a81bdb668700360eda11cf9619de</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2017-11-26 07:51:02</sys_updated_on>
+        <sys_updated_on>2017-11-30 06:34:57</sys_updated_on>
         <use_scoped_format>false</use_scoped_format>
     </sys_ui_script>
 </record_update>
