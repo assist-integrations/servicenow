@@ -6,6 +6,28 @@
     font-family: Lato;&#13;
 }&#13;
 &#13;
+th,td{&#13;
+    padding: 0;&#13;
+   border: none;&#13;
+}&#13;
+*, *::after, *::before{&#13;
+    box-sizing: border-box;&#13;
+}&#13;
+&#13;
+th{&#13;
+    text-align: center;&#13;
+    font-weight: 400 !important;&#13;
+}&#13;
+&#13;
+.assist-refresh-icon{&#13;
+    background-size: 20px;&#13;
+     background-repeat: no-repeat;&#13;
+    background-position: center;&#13;
+    width: 80px;&#13;
+    height: 80px;&#13;
+    background-image: url('data:image/png;base64,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');&#13;
+}&#13;
+&#13;
 #content  .data {&#13;
     color: #363;&#13;
     padding-left: 6px;&#13;
@@ -261,7 +283,7 @@ font-family: 'zofo';&#13;
 vertical-align: middle;&#13;
 }&#13;
 &#13;
-.assist-close-icon :: before{&#13;
+.assist-close-icon :: hover{&#13;
 	border: 1px solid #ccc;&#13;
 	border-radius:35px;&#13;
 	background-color:#e3e3e3;&#13;
@@ -272,7 +294,7 @@ vertical-align: middle;&#13;
         <sys_created_on>2017-11-14 10:23:18</sys_created_on>
         <sys_customer_update>true</sys_customer_update>
         <sys_id>1d7b8f67db96cb40360eda11cf961961</sys_id>
-        <sys_mod_count>9</sys_mod_count>
+        <sys_mod_count>14</sys_mod_count>
         <sys_name>Assist Style Sheet</sys_name>
         <sys_package display_value="Assist" source="x_manen_assist">2ef5cf23db96cb40360eda11cf9619f3</sys_package>
         <sys_policy/>
@@ -280,7 +302,7 @@ vertical-align: middle;&#13;
         <sys_scope display_value="Assist">2ef5cf23db96cb40360eda11cf9619f3</sys_scope>
         <sys_update_name>content_css_1d7b8f67db96cb40360eda11cf961961</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2017-11-30 08:07:09</sys_updated_on>
+        <sys_updated_on>2017-12-01 17:19:04</sys_updated_on>
         <type>local</type>
         <url/>
     </content_css>

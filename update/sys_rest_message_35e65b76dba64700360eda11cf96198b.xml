@@ -10,13 +10,13 @@
         <name>AssistSessionAPI</name>
         <oauth2_profile/>
         <protocol_name/>
-        <rest_endpoint>https://stageassist.zoho.com/api/v2/session</rest_endpoint>
+        <rest_endpoint>https://assist.zoho.${domain}/api/v2/session</rest_endpoint>
         <sys_class_name>sys_rest_message</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2017-11-24 13:48:36</sys_created_on>
         <sys_customer_update>true</sys_customer_update>
         <sys_id>35e65b76dba64700360eda11cf96198b</sys_id>
-        <sys_mod_count>7</sys_mod_count>
+        <sys_mod_count>14</sys_mod_count>
         <sys_name>AssistSessionAPI</sys_name>
         <sys_package display_value="Assist" source="x_manen_assist">2ef5cf23db96cb40360eda11cf9619f3</sys_package>
         <sys_policy/>
@@ -24,7 +24,7 @@
         <sys_scope display_value="Assist">2ef5cf23db96cb40360eda11cf9619f3</sys_scope>
         <sys_update_name>sys_rest_message_35e65b76dba64700360eda11cf96198b</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2017-11-30 07:59:32</sys_updated_on>
+        <sys_updated_on>2017-12-04 06:06:22</sys_updated_on>
         <use_basic_auth>false</use_basic_auth>
         <use_mutual_auth>false</use_mutual_auth>
     </sys_rest_message>

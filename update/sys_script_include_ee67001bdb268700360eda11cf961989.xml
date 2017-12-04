@@ -15,7 +15,6 @@ AssistRestAPIHandler.prototype = Object.extendsObject(global.AbstractAjaxProcess
 			 var incident_detail = this.getParameter('incident_detail');
 			 var incident_detail_JSON = new global.JSON().decode(incident_detail);
 			 
-			 var r = new sn_ws.RESTMessageV2('x_manen_assist.AssistSessionAPI', 'CreateSession');
 			 var token = incident_detail_JSON['api_key'];
 			 var domain = incident_detail_JSON['domain'];
 			 var customer_email = incident_detail_JSON['customer_email'];
@@ -61,6 +60,8 @@ AssistRestAPIHandler.prototype = Object.extendsObject(global.AbstractAjaxProcess
 			 r.setStringParameter("case_id",case_id);
 			 r.setStringParameter("type",type);
 			 r.setStringParameterNoEscape("mail_param",mail_param);
+			 
+			 var r = new sn_ws.RESTMessageV2('x_manen_assist.AssistSessionAPI', 'CreateSession');
 
 			 var response = r.execute();
 			 var responseBody = response.getBody();
@@ -77,6 +78,15 @@ AssistRestAPIHandler.prototype = Object.extendsObject(global.AbstractAjaxProcess
 			msg.setAttribute('source', 'ui_action');
 		}
 	},
+	
+	getProperty: function(){
+		try{
+			var prop_name = this.getParameter('property_name');
+			return gs.getProperty(prop_name);
+		}catch(ex){
+			return "";
+		}
+	},
 
     type: 'AssistRestAPIHandler'
 });]]></script>
@@ -85,7 +95,7 @@ AssistRestAPIHandler.prototype = Object.extendsObject(global.AbstractAjaxProcess
         <sys_created_on>2017-11-25 11:44:00</sys_created_on>
         <sys_customer_update>true</sys_customer_update>
         <sys_id>ee67001bdb268700360eda11cf961989</sys_id>
-        <sys_mod_count>67</sys_mod_count>
+        <sys_mod_count>85</sys_mod_count>
         <sys_name>AssistRestAPIHandler</sys_name>
         <sys_package display_value="Assist" source="x_manen_assist">2ef5cf23db96cb40360eda11cf9619f3</sys_package>
         <sys_policy>read</sys_policy>
@@ -93,6 +103,6 @@ AssistRestAPIHandler.prototype = Object.extendsObject(global.AbstractAjaxProcess
         <sys_scope display_value="Assist">2ef5cf23db96cb40360eda11cf9619f3</sys_scope>
         <sys_update_name>sys_script_include_ee67001bdb268700360eda11cf961989</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2017-11-30 06:33:49</sys_updated_on>
+        <sys_updated_on>2017-12-04 06:05:38</sys_updated_on>
     </sys_script_include>
 </record_update>

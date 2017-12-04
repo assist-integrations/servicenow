@@ -28,7 +28,7 @@
         <foreign_database/>
         <internal_type display_value="String">string</internal_type>
         <mandatory>false</mandatory>
-        <max_length>40</max_length>
+        <max_length>65000</max_length>
         <name>x_manen_assist_assist_incident_mapping</name>
         <next_element/>
         <primary>false</primary>

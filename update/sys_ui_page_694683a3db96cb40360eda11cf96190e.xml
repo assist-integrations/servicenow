@@ -54,8 +54,8 @@ function getActionButton(val,type){
 	<input type="hidden" id="source_from" name="source_from" value="$[RP.getParameterValue('src')]" />
 	
 	<!-- Assist UI Componenet -->
+	<div style="float:right;" class="assist-refresh-icon" onclick="refreshPage();"></div>
 	<div id="content"><div class="preloader"></div></div>
-	<div style="color:blue;float:right;" onclick="refreshPage();"><u>Refresh</u></div>
 </j:jelly>]]></html>
         <name>AssistIFrame</name>
         <processing_script/>
@@ -64,7 +64,7 @@ function getActionButton(val,type){
         <sys_created_on>2017-11-14 10:01:25</sys_created_on>
         <sys_customer_update>true</sys_customer_update>
         <sys_id>694683a3db96cb40360eda11cf96190e</sys_id>
-        <sys_mod_count>91</sys_mod_count>
+        <sys_mod_count>93</sys_mod_count>
         <sys_name>AssistIFrame</sys_name>
         <sys_package display_value="Assist" source="x_manen_assist">2ef5cf23db96cb40360eda11cf9619f3</sys_package>
         <sys_policy>read</sys_policy>
@@ -72,6 +72,6 @@ function getActionButton(val,type){
         <sys_scope display_value="Assist">2ef5cf23db96cb40360eda11cf9619f3</sys_scope>
         <sys_update_name>sys_ui_page_694683a3db96cb40360eda11cf96190e</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2017-11-30 08:04:18</sys_updated_on>
+        <sys_updated_on>2017-12-01 17:21:26</sys_updated_on>
     </sys_ui_page>
 </record_update>

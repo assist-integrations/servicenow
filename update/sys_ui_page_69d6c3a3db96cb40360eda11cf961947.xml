@@ -2,26 +2,7 @@
 <record_update table="sys_ui_page">
     <sys_ui_page action="INSERT_OR_UPDATE">
         <category>general</category>
-        <client_script><![CDATA[//$(function() {
-//	if(!hasAssistRole()){
-//		var no_access_component = assistNoAccessPage(assist_application_role_txt,assist_admin_contact_txt);
-//		alert(assist_application_role_txt+"\n"+assist_admin_contact_txt);
-//	}else{
-//		var case_id = $('#sys_id_input').val();
-//		var type = $('#sys_type_input').val();
-//		getIncidentRecord(case_id);
-//		var api_key = incident_detail.api_key;
-//		if(api_key!=undefined){
-//			getSessionAPI(type);
-//		}else{
-//			var not_configured = assistNoAccessPage(not_configured_txt,assist_admin_contact_txt);
-//			alert(not_configured_txt+"\n"+assist_admin_contact_txt);
-//		}
-//	}
-	//closeDialog();
-//});
-
-function closeDialog(){
+        <client_script><![CDATA[function closeDialog(){
 	document.location.reload(true);
 }]]></client_script>
         <description/>
@@ -29,19 +10,23 @@ function closeDialog(){
         <endpoint>x_manen_assist_AssistIFrameByAction.do</endpoint>
         <html><![CDATA[<g:ui_form>
 	
+	<!-- Including JS and CSS files -->
+	<g:include_script src="x_manen_assist.jquery.jsdbx" />
+	<g:include_script src="x_manen_assist.AssistUtilScript.jsdbx" />
+	
 	<!-- Including CSS files -->
 	<link rel="stylesheet" href="https://sites.zoho.com/webfonts?family=Lato:300,300i,400,400i,600,600i,700,700i,900,900i"></link>
 	<link href="1d7b8f67db96cb40360eda11cf961961.cssdbx" rel="stylesheet" type="text/css"></link>
 	
 	<!-- Getting Sys ID and Type-->
 	<input type="hidden" id="sys_id_input" name="sys_id_input" value="${sysparm_id}" />
-	<input type="hidden" id="sys_type_input" name="sys_type_input" value="${sysparm_type}" />
 	
 	<!-- Assist UI Componenet -->
 	<div class="assist-close-container" onclick="closeDialog();">
 		<span class="assist-close-icon">x</span>
 	</div>
-	<iframe src="x_manen_assist_AssistIFrame.do?sysparm_id=${sysparm_id}&amp;src=ui_action" id="assist-iframe-call" width="100%" height="100%" style="border:0px;height:150px;margin:20px 0 0;"></iframe>
+		<iframe src="x_manen_assist_AssistIFrame.do?sysparm_id=${sysparm_id}&amp;src=ui_action" id="assist-iframe-call" width="100%" height="100%" style="border:0px;height:150px;margin:20px 0 0;"></iframe>
+	
 	
 	<!-- style="width:100%;height:100%;background:white;border:0px;padding:20px; -->
 </g:ui_form>]]></html>
@@ -52,7 +37,7 @@ function closeDialog(){
         <sys_created_on>2017-11-14 10:05:45</sys_created_on>
         <sys_customer_update>true</sys_customer_update>
         <sys_id>69d6c3a3db96cb40360eda11cf961947</sys_id>
-        <sys_mod_count>26</sys_mod_count>
+        <sys_mod_count>31</sys_mod_count>
         <sys_name>AssistIFrameByAction</sys_name>
         <sys_package display_value="Assist" source="x_manen_assist">2ef5cf23db96cb40360eda11cf9619f3</sys_package>
         <sys_policy>read</sys_policy>
@@ -60,6 +45,6 @@ function closeDialog(){
         <sys_scope display_value="Assist">2ef5cf23db96cb40360eda11cf9619f3</sys_scope>
         <sys_update_name>sys_ui_page_69d6c3a3db96cb40360eda11cf961947</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2017-11-30 08:07:18</sys_updated_on>
+        <sys_updated_on>2017-11-30 13:59:05</sys_updated_on>
     </sys_ui_page>
 </record_update>
