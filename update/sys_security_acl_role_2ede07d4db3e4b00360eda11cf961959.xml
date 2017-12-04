@@ -16,7 +16,7 @@
         <sys_update_name>sys_security_acl_role_2ede07d4db3e4b00360eda11cf961959</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
         <sys_updated_on>2017-11-29 04:49:27</sys_updated_on>
-        <sys_user_role display_value="x_manen_assist.moderator" name="x_manen_assist.moderator">bf27624bdbee4700360eda11cf9619df</sys_user_role>
+        <sys_user_role display_value="x_manen_assist.Assist Moderator" name="x_manen_assist.Assist Moderator">bf27624bdbee4700360eda11cf9619df</sys_user_role>
         <transaction_id/>
     </sys_security_acl_role>
 </record_update>
