@@ -5,18 +5,16 @@
         <description/>
         <global>false</global>
         <name>x_manen_assist.AssistUtilScript</name>
-        <script><![CDATA[var assist_application_role_txt = "Looks like you don't have any assist application role in service now.";
-var assist_application_admin_role_txt = "Looks like you don't have assist application admin role in service now.";
-var assist_admin_contact_txt =  "Kinldy contact your Servicenow Administrator or Assist Application Administrator.";
+        <script><![CDATA[var assist_application_role_txt = "You cannot access this page as you do not have the required administrator privileges.";
+var assist_application_admin_role_txt = "You can access this page only if your Admin assigns you a role.";
+var assist_admin_contact_txt =  "Please contact your ServiceNow Administrator.";
 var remote_support_txt = "Start a session to get connected to your remote customers instantly.";
 var scree_sharing_txt = "Start a session to share your computer screen for demo or training.";
 var pop_up_blocker_txt = "Please disable your browser's pop-up blocker to conduct remote support/screen sharing sessions.";
 var not_configured_txt = "You have not configured ServiceNow Integration in Zoho Assist.";
 var no_access_err_txt = "You do not have the permission to initiate a session.";
-var not_configured_in_assist_err_txt = "You have not configured ServiceNow Integration in Zoho Assist.";
-var upgrade_assist_err_txt = "Upgrade your Zoho Assist pricing plan to enjoy this feature in service-now service.";
-var license_not_applicable_err_txt = "License not applicable.";
-var common_err_txt = "Some error occurred.";
+var upgrade_assist_err_txt = "Please upgrade your Zoho Assist pricing plan to enjoy this feature in Servicenow.";
+var common_err_txt = "We're sorry, something went wrong. Please try again later";
 var app_admin_role = "x_manen_assist.admin";
 var app_moderator_role = "x_manen_assist.moderator";
 var app_user_role = "x_manen_assist.user";
@@ -150,11 +148,10 @@ function showErrorMessages(errResp,src) {
 		errMessage1 = not_configured_in_assist_txt;
 		errMessage2 = assist_admin_contact_txt;
 	}else if(code == 1031){
-		errMessage1 = not_configured_in_assist_err_txt;
+		errMessage1 = not_configured_txt;
 		errMessage2 = assist_admin_contact_txt;
 	}else if(code == 1008){
-		errMessage1 = license_not_applicable_err_txt;
-		errMessage2 = upgrade_assist_err_txt;
+		errMessage1 = upgrade_assist_err_txt;
 	}else{
 		errMessage1 =  common_err_txt;
 		errMessage2 = assist_admin_contact_txt;
@@ -211,7 +208,7 @@ function getAssistUIComponent(){
         <sys_created_on>2017-11-25 13:58:27</sys_created_on>
         <sys_customer_update>true</sys_customer_update>
         <sys_id>6fb5a81bdb668700360eda11cf9619de</sys_id>
-        <sys_mod_count>78</sys_mod_count>
+        <sys_mod_count>81</sys_mod_count>
         <sys_name>x_manen_assist.AssistUtilScript</sys_name>
         <sys_package display_value="Assist" source="x_manen_assist">2ef5cf23db96cb40360eda11cf9619f3</sys_package>
         <sys_policy/>
@@ -219,7 +216,7 @@ function getAssistUIComponent(){
         <sys_scope display_value="Assist">2ef5cf23db96cb40360eda11cf9619f3</sys_scope>
         <sys_update_name>sys_ui_script_6fb5a81bdb668700360eda11cf9619de</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2017-12-04 10:04:00</sys_updated_on>
+        <sys_updated_on>2017-12-05 05:50:08</sys_updated_on>
         <use_scoped_format>false</use_scoped_format>
     </sys_ui_script>
 </record_update>
