@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <record_update table="sys_script_include">
     <sys_script_include action="INSERT_OR_UPDATE">
-        <access>package_private</access>
+        <access>public</access>
         <active>true</active>
         <api_name>x_manen_assist.AssistRestAPIHandler</api_name>
         <client_callable>true</client_callable>
@@ -14,7 +14,7 @@ AssistRestAPIHandler.prototype = Object.extendsObject(global.AbstractAjaxProcess
 		 try { 
 			 var incident_detail = this.getParameter('incident_detail');
 			 var incident_detail_JSON = new global.JSON().decode(incident_detail);
-			 
+
 			 var token = incident_detail_JSON['api_key'];
 			 var domain = incident_detail_JSON['domain'];
 			 var customer_email = incident_detail_JSON['customer_email'];
@@ -54,28 +54,25 @@ AssistRestAPIHandler.prototype = Object.extendsObject(global.AbstractAjaxProcess
 				 mail_param+="&"+department;
 			 }
 			 
+			 var r = new sn_ws.RESTMessageV2('x_manen_assist.AssistSessionAPI', 'CreateSession');
 			 
 			 r.setStringParameter("token",token);
 			 r.setStringParameter("domain",domain);
 			 r.setStringParameter("case_id",case_id);
 			 r.setStringParameter("type",type);
 			 r.setStringParameterNoEscape("mail_param",mail_param);
-			 
-			 var r = new sn_ws.RESTMessageV2('x_manen_assist.AssistSessionAPI', 'CreateSession');
 
 			 var response = r.execute();
 			 var responseBody = response.getBody();
-			 var httpStatus = response.getStatusCode();
+			 //var httpStatus = response.getStatusCode();
 			 
 			 var msg = this.newItem('session_api');
 		     msg.setAttribute('value', responseBody);
-			 msg.setAttribute('source', src);
 		 }
 		catch(ex) {
 			var message = ex.getMessage();
 			var msg = this.newItem('session_api');
 			msg.setAttribute('value', message);
-			msg.setAttribute('source', 'ui_action');
 		}
 	},
 	
@@ -95,7 +92,7 @@ AssistRestAPIHandler.prototype = Object.extendsObject(global.AbstractAjaxProcess
         <sys_created_on>2017-11-25 11:44:00</sys_created_on>
         <sys_customer_update>true</sys_customer_update>
         <sys_id>ee67001bdb268700360eda11cf961989</sys_id>
-        <sys_mod_count>85</sys_mod_count>
+        <sys_mod_count>98</sys_mod_count>
         <sys_name>AssistRestAPIHandler</sys_name>
         <sys_package display_value="Assist" source="x_manen_assist">2ef5cf23db96cb40360eda11cf9619f3</sys_package>
         <sys_policy>read</sys_policy>
@@ -103,6 +100,6 @@ AssistRestAPIHandler.prototype = Object.extendsObject(global.AbstractAjaxProcess
         <sys_scope display_value="Assist">2ef5cf23db96cb40360eda11cf9619f3</sys_scope>
         <sys_update_name>sys_script_include_ee67001bdb268700360eda11cf961989</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2017-12-04 06:05:38</sys_updated_on>
+        <sys_updated_on>2017-12-05 07:10:11</sys_updated_on>
     </sys_script_include>
 </record_update>
