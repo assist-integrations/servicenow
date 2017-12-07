@@ -3,7 +3,7 @@
     <sys_ui_page action="INSERT_OR_UPDATE">
         <category>general</category>
         <client_script><![CDATA[$(function(){
-	if(g_user.hasRole("x_manen_assist.admin") || g_user.hasRole("admin") || g_user.hasRole("x_manen_assist.moderator")){
+	if(g_user.hasRole("x_manen_assist.AssistAdmin") || g_user.hasRole("admin") || g_user.hasRole("x_manen_assist.AssistModerator")){
 		getSystemProperties();
 	}
 	else{
@@ -160,7 +160,7 @@ function getSystemProperties(){
         <sys_created_on>2017-11-14 10:06:40</sys_created_on>
         <sys_customer_update>true</sys_customer_update>
         <sys_id>eaa74fa3db96cb40360eda11cf961962</sys_id>
-        <sys_mod_count>43</sys_mod_count>
+        <sys_mod_count>44</sys_mod_count>
         <sys_name>AssistSetup</sys_name>
         <sys_package display_value="Assist" source="x_manen_assist">2ef5cf23db96cb40360eda11cf9619f3</sys_package>
         <sys_policy>read</sys_policy>
@@ -168,6 +168,6 @@ function getSystemProperties(){
         <sys_scope display_value="Assist">2ef5cf23db96cb40360eda11cf9619f3</sys_scope>
         <sys_update_name>sys_ui_page_eaa74fa3db96cb40360eda11cf961962</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2017-11-30 06:47:27</sys_updated_on>
+        <sys_updated_on>2017-12-07 06:32:27</sys_updated_on>
     </sys_ui_page>
 </record_update>
