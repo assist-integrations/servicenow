@@ -7,7 +7,7 @@
         <sys_created_on>2017-11-30 07:03:16</sys_created_on>
         <sys_customer_update>true</sys_customer_update>
         <sys_id>6a867cb0db364700360eda11cf9619de</sys_id>
-        <sys_mod_count>24</sys_mod_count>
+        <sys_mod_count>25</sys_mod_count>
         <sys_name>Assist System Category</sys_name>
         <sys_package display_value="Assist" source="x_manen_assist">2ef5cf23db96cb40360eda11cf9619f3</sys_package>
         <sys_policy/>
@@ -15,9 +15,8 @@
         <sys_scope display_value="Assist">2ef5cf23db96cb40360eda11cf9619f3</sys_scope>
         <sys_update_name>sys_properties_category_6a867cb0db364700360eda11cf9619de</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2017-12-22 05:31:33</sys_updated_on>
+        <sys_updated_on>2017-12-22 06:51:19</sys_updated_on>
         <title><![CDATA[<div style="margin-top: 30px; margin-bottom: 35px; padding-bottom: 0; margin-left: 30px;">
-<div style="height: 60px; width: 60px; float: left;"><span style="font-family: symbol;"><img style="float: left;" title="AssistIcon" src="sys_attachment.do?sys_id&#61;19e678f0db364700360eda11cf961918" alt="AssistIcon" width="73" height="73" align="baseline" border="" hspace="" vspace="" /></span></div>
 <div style="display: table-cell; vertical-align: middle; height: 100%; text-align: left;">
 <div style="float: left; margin-left: 20px; color: #333;">
 <h2 style="margin: 10px 0 5px 0; font-weight: 400;"><span style="font-family: symbol;"><span style="font-size: 24pt;"><strong>ManageEngine Zoho Assist</strong></span></span></h2>
