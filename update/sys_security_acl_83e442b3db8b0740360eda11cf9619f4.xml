@@ -5,7 +5,7 @@
         <admin_overrides>true</admin_overrides>
         <advanced>false</advanced>
         <condition/>
-        <description/>
+        <description>Assist UI Action Page</description>
         <name>x_manen_assist_AssistIFrameByAction</name>
         <operation display_value="read">read</operation>
         <script/>
@@ -14,7 +14,7 @@
         <sys_created_on>2017-12-22 06:41:00</sys_created_on>
         <sys_customer_update>true</sys_customer_update>
         <sys_id>83e442b3db8b0740360eda11cf9619f4</sys_id>
-        <sys_mod_count>0</sys_mod_count>
+        <sys_mod_count>1</sys_mod_count>
         <sys_name>x_manen_assist_AssistIFrameByAction</sys_name>
         <sys_package display_value="Assist" source="x_manen_assist">2ef5cf23db96cb40360eda11cf9619f3</sys_package>
         <sys_policy/>
@@ -22,7 +22,7 @@
         <sys_scope display_value="Assist">2ef5cf23db96cb40360eda11cf9619f3</sys_scope>
         <sys_update_name>sys_security_acl_83e442b3db8b0740360eda11cf9619f4</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2017-12-22 06:41:00</sys_updated_on>
+        <sys_updated_on>2017-12-22 06:59:30</sys_updated_on>
         <type display_value="ui_page">ui_page</type>
     </sys_security_acl>
 </record_update>
