@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_ui_page">
+    <sys_ui_page action="INSERT_OR_UPDATE">
+        <category>general</category>
+        <client_script/>
+        <description/>
+        <direct>false</direct>
+        <endpoint>x_manen_assist_AssistSupportDetails.do</endpoint>
+        <html><![CDATA[<?xml version="1.0" encoding="utf-8" ?>
+<j:jelly trim="false" xmlns:j="jelly:core" xmlns:g="glide" xmlns:j2="null" xmlns:g2="null">
+	<div style="margin-top: 30px; margin-bottom: 35px; padding-bottom: 0; margin-left: 30px;">
+<div style="height: 60px; width: 60px; float: left;"><span style="font-family: symbol;"><img style="float: left;" title="AssistIcon" src="sys_attachment.do?sys_id=19e678f0db364700360eda11cf961918" alt="AssistIcon" width="73" height="73" align="baseline" border="" hspace="" vspace="" /></span></div>
+<div style="display: table-cell; vertical-align: middle; height: 100%; text-align: left;">
+<div style="float: left; margin-left: 20px; color: #333;">
+<h2 style="margin: 10px 0 5px 0; font-weight: 400;"><span style="font-family: symbol;"><span style="font-size: 24pt;"><strong>ManageEngine Zoho Assist</strong></span></span></h2>
+<p style="font-size: 16px; line-height: 20px; margin-bottom: 10px; padding-right: 15px;"><span style="font-family: symbol;">Instantly support customers located anywhere using Zoho Assist, a remote support and remote access software.</span><a href="https://www.zoho.com/assist/help/servicenow.html" target="_blank" rel="nofollow">Learn more.</a></p>
+</div>
+</div>
+</div>
+<div style="clear: both; float: left; text-align: left; margin-left: 50px;">
+<ul>
+<li>
+<p><span style="font-family: symbol; font-size: 10pt;">Support Hours of Operation: 11am to 11 pm IST</span></p>
+</li>
+<li>
+<p><span style="font-family: symbol; font-size: 10pt;">Support Days of Operation: Monday to Friday</span></p>
+</li>
+<li>
+<p><span style="font-family: symbol; font-size: 10pt;">support@zohoassist.com / integrations@zohoassist.com</span></p>
+</li>
+</ul>
+</div>
+</j:jelly>]]></html>
+        <name>AssistSupportDetails</name>
+        <processing_script/>
+        <sys_class_name>sys_ui_page</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2017-12-22 05:53:54</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_id>773a3973db8b0740360eda11cf961975</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_name>AssistSupportDetails</sys_name>
+        <sys_package display_value="Assist" source="x_manen_assist">2ef5cf23db96cb40360eda11cf9619f3</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Assist">2ef5cf23db96cb40360eda11cf9619f3</sys_scope>
+        <sys_update_name>sys_ui_page_773a3973db8b0740360eda11cf961975</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2017-12-22 05:55:35</sys_updated_on>
+    </sys_ui_page>
+</record_update>

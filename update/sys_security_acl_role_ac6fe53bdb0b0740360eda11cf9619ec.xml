@@ -3,19 +3,19 @@
     <sys_security_acl_role action="INSERT_OR_UPDATE">
         <sys_class_name>sys_security_acl_role</sys_class_name>
         <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2017-11-29 04:49:27</sys_created_on>
+        <sys_created_on>2017-12-22 05:06:21</sys_created_on>
         <sys_customer_update>true</sys_customer_update>
-        <sys_id>0dee8f50db3e4b00360eda11cf9619bb</sys_id>
+        <sys_id>ac6fe53bdb0b0740360eda11cf9619ec</sys_id>
         <sys_mod_count>0</sys_mod_count>
-        <sys_name>.x_manen_assist.user</sys_name>
+        <sys_name>.x_manen_assist.AssistUser</sys_name>
         <sys_package display_value="Assist" source="x_manen_assist">2ef5cf23db96cb40360eda11cf9619f3</sys_package>
         <sys_policy/>
         <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
         <sys_scope display_value="Assist">2ef5cf23db96cb40360eda11cf9619f3</sys_scope>
-        <sys_security_acl display_value="AssistIFrame">638ecf5cdbba4b00360eda11cf9619b9</sys_security_acl>
-        <sys_update_name>sys_security_acl_role_0dee8f50db3e4b00360eda11cf9619bb</sys_update_name>
+        <sys_security_acl display_value="x_manen_assist_assist_incident_mapping.*">664fe5bbdb4b0740360eda11cf9619bc</sys_security_acl>
+        <sys_update_name>sys_security_acl_role_ac6fe53bdb0b0740360eda11cf9619ec</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2017-11-29 04:49:27</sys_updated_on>
+        <sys_updated_on>2017-12-22 05:06:21</sys_updated_on>
         <sys_user_role display_value="x_manen_assist.AssistUser" name="x_manen_assist.AssistUser">6a2ddebadbe24700360eda11cf961917</sys_user_role>
         <transaction_id/>
     </sys_security_acl_role>
