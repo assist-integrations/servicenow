@@ -6,14 +6,14 @@
         <ignore_cache>false</ignore_cache>
         <is_private>false</is_private>
         <name>x_manen_assist.api_key</name>
-        <read_roles>x_manen_assist.admin,admin,x_manen_assist.moderator</read_roles>
+        <read_roles>admin,x_manen_assist.AssistAdmin,x_manen_assist.AssistModerator</read_roles>
         <suffix>api_key</suffix>
         <sys_class_name>sys_properties</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2017-11-14 10:16:29</sys_created_on>
         <sys_customer_update>true</sys_customer_update>
         <sys_id>b6794fe3db96cb40360eda11cf9619f6</sys_id>
-        <sys_mod_count>59</sys_mod_count>
+        <sys_mod_count>60</sys_mod_count>
         <sys_name>x_manen_assist.api_key</sys_name>
         <sys_package display_value="Assist" source="x_manen_assist">2ef5cf23db96cb40360eda11cf9619f3</sys_package>
         <sys_policy/>
@@ -21,10 +21,10 @@
         <sys_scope display_value="Assist">2ef5cf23db96cb40360eda11cf9619f3</sys_scope>
         <sys_update_name>sys_properties_b6794fe3db96cb40360eda11cf9619f6</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2017-12-22 10:02:40</sys_updated_on>
+        <sys_updated_on>2017-12-29 10:26:27</sys_updated_on>
         <type>password2</type>
         <value/>
-        <write_roles>admin,x_manen_assist.admin,x_manen_assist.moderator</write_roles>
+        <write_roles>admin,x_manen_assist.AssistAdmin,x_manen_assist.AssistModerator</write_roles>
     </sys_properties>
     <sys_translated_text action="delete_multiple" query="documentkey=b6794fe3db96cb40360eda11cf9619f6"/>
 </record_update>
