@@ -2,19 +2,16 @@
 <record_update table="content_css">
     <content_css action="INSERT_OR_UPDATE">
         <name>Assist Style Sheet</name>
-        <style>input,p,div,span,button{&#13;
+        <style>#x_manen_assist_AssistIFrameByAction, #content{&#13;
     font-family: Lato;&#13;
 }&#13;
 &#13;
-th,td{&#13;
+#x_manen_assist_AssistIFrameByAction th,#x_manen_assist_AssistIFrameByAction td{&#13;
     padding: 0;&#13;
    border: none;&#13;
 }&#13;
-*, *::after, *::before{&#13;
-    box-sizing: border-box;&#13;
-}&#13;
 &#13;
-th{&#13;
+#x_manen_assist_AssistIFrameByAction th{&#13;
     text-align: center;&#13;
     font-weight: 400 !important;&#13;
 }&#13;
@@ -294,7 +291,7 @@ vertical-align: middle;&#13;
         <sys_created_on>2017-11-14 10:23:18</sys_created_on>
         <sys_customer_update>true</sys_customer_update>
         <sys_id>1d7b8f67db96cb40360eda11cf961961</sys_id>
-        <sys_mod_count>14</sys_mod_count>
+        <sys_mod_count>16</sys_mod_count>
         <sys_name>Assist Style Sheet</sys_name>
         <sys_package display_value="Assist" source="x_manen_assist">2ef5cf23db96cb40360eda11cf9619f3</sys_package>
         <sys_policy/>
@@ -302,7 +299,7 @@ vertical-align: middle;&#13;
         <sys_scope display_value="Assist">2ef5cf23db96cb40360eda11cf9619f3</sys_scope>
         <sys_update_name>content_css_1d7b8f67db96cb40360eda11cf961961</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2017-12-01 17:19:04</sys_updated_on>
+        <sys_updated_on>2018-01-02 06:23:20</sys_updated_on>
         <type>local</type>
         <url/>
     </content_css>
