@@ -14,7 +14,7 @@ var pop_up_blocker_txt = "Please disable your browser's pop-up blocker to conduc
 var not_configured_txt = "You have not configured ServiceNow Integration in Zoho Assist.";
 var no_access_err_txt = "You do not have the permission to initiate a session.";
 var upgrade_assist_err_txt = "Please upgrade your Zoho Assist pricing plan to enjoy this feature in Servicenow.";
-var common_err_txt = "We're sorry, something went wrong. Please try again later";
+var common_err_txt = "We're sorry, something went wrong. Please try again later.";
 var app_admin_role = "x_manen_assist.AssistAdmin";
 var app_moderator_role = "x_manen_assist.AssistModerator";
 var app_user_role = "x_manen_assist.AssistUser";
@@ -34,23 +34,27 @@ function getIncidentRecord(sys_id) {
 	incident_record.query();
 	incident_record.next();
 	
-	if(incident_record.number!=undefined){
+	if(incident_record.number !== undefined){
 		incident_detail.mail_subject = incident_record.number;
 	}
-	if(incident_record.short_description!=undefined){
+	if(incident_record.short_description !== undefined){
 		incident_detail.mail_content = encodeURIComponent(incident_record.short_description);
 	}
 	
 	var caller_id = incident_record.caller_id;
 
 	// Getting Caller Records
-	if(caller_id!=undefined){
+	if(caller_id !== undefined){
 		var caller_record = new GlideRecord('sys_user');
 		caller_record.addQuery("sys_id", caller_id);
 		caller_record.query();
 		caller_record.next();
-		incident_detail.customer_email = encodeURIComponent(caller_record.email);
-		incident_detail.customer_name = encodeURIComponent(caller_record.name);
+		if(caller_record.email !== undefined){
+			incident_detail.customer_email = encodeURIComponent(caller_record.email);
+		}
+		if(caller_record.name !== undefined){
+			incident_detail.customer_name = encodeURIComponent(caller_record.name);
+		}
 	}
 
 	// Getting Department Records
@@ -58,7 +62,9 @@ function getIncidentRecord(sys_id) {
 	department_record.addQuery("sys_id", g_user.departmentID);
 	department_record.query();
 	department_record.next();
-	incident_detail.department = encodeURIComponent(department_record.description);
+	if(department_record.description !== undefined){
+		incident_detail.department = encodeURIComponent(department_record.description);
+	}
 	
 	
 	if(incident_detail.mail_content!=undefined && incident_detail.mail_content.length>250){
@@ -72,19 +78,29 @@ function getIncidentRecord(sys_id) {
 	var inc = new GlideAjax("x_manen_assist.AssistRestAPIHandler");
 	inc.addParam("sysparm_name","getProperty");
 	inc.addParam("property_name","x_manen_assist.api_key");
-	inc.getXMLWait();
-	incident_detail.api_key=inc.getAnswer();
+	inc.getXML(function(response){
+		incident_detail.api_key = response.responseXML.documentElement.getAttribute("answer");
+		var api_key = incident_detail.api_key;
+		if(api_key !== undefined && api_key !== "" && api_key !== null){
+			var assist_ui_comp = getAssistUIComponent();
+			$('#content').html(assist_ui_comp);
+		}else{
+			var not_configured = assistNoAccessPage(not_configured_txt,assist_admin_contact_txt);
+			$('#content').html(not_configured);
+		}
+	});
 	
 	inc = new GlideAjax("x_manen_assist.AssistRestAPIHandler");
 	inc.addParam("sysparm_name","getProperty");
 	inc.addParam("property_name","x_manen_assist.is_eu");
-	inc.getXMLWait();
-	incident_detail.domain=inc.getAnswer();
-	if(incident_detail.domain==true){
-		incident_detail.domain = "eu";
-	}else{
-		incident_detail.domain = "com";
-	}
+	inc.getXML(function(response){
+		incident_detail.domain = response.responseXML.documentElement.getAttribute("answer");
+		if(incident_detail.domain==true){
+			incident_detail.domain = "eu";
+		}else{
+			incident_detail.domain = "com";
+		}
+	});
 	
 	// Getting Subdomain from window location
 	var subdomain = window.location.host;
@@ -115,9 +131,7 @@ function restSessionAPIHandler(response) {
 }
 
 function getSessionAPI(){
-	
 	incident_detail.type = $("#content input[name='remote_option']:checked"). val();
-	
 	var inc = new GlideAjax("x_manen_assist.AssistRestAPIHandler");
 	inc.addParam("sysparm_name","getSessionAPI");
 	inc.addParam("incident_detail",JSON.stringify(incident_detail));
@@ -195,7 +209,7 @@ function getAssistUIComponent(){
         <sys_created_on>2017-11-25 13:58:27</sys_created_on>
         <sys_customer_update>true</sys_customer_update>
         <sys_id>6fb5a81bdb668700360eda11cf9619de</sys_id>
-        <sys_mod_count>94</sys_mod_count>
+        <sys_mod_count>104</sys_mod_count>
         <sys_name>x_manen_assist.AssistUtilScript</sys_name>
         <sys_package display_value="Assist" source="x_manen_assist">2ef5cf23db96cb40360eda11cf9619f3</sys_package>
         <sys_policy/>
@@ -203,7 +217,7 @@ function getAssistUIComponent(){
         <sys_scope display_value="Assist">2ef5cf23db96cb40360eda11cf9619f3</sys_scope>
         <sys_update_name>sys_ui_script_6fb5a81bdb668700360eda11cf9619de</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2017-12-07 06:31:29</sys_updated_on>
+        <sys_updated_on>2019-06-01 06:22:46</sys_updated_on>
         <use_scoped_format>false</use_scoped_format>
     </sys_ui_script>
 </record_update>
