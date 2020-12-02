@@ -1,16 +1,13 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<record_update table="sys_ui_action_role">
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_ui_action_role">
     <sys_ui_action_role action="INSERT_OR_UPDATE">
         <sys_class_name>sys_ui_action_role</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2017-12-04 09:51:07</sys_created_on>
-        <sys_customer_update>true</sys_customer_update>
         <sys_id>7ae3c28adb360b00360eda11cf96191c</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_name>Zoho Assist.x_manen_assist.user</sys_name>
         <sys_package display_value="Assist" source="x_manen_assist">2ef5cf23db96cb40360eda11cf9619f3</sys_package>
         <sys_policy/>
-        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
         <sys_scope display_value="Assist">2ef5cf23db96cb40360eda11cf9619f3</sys_scope>
         <sys_ui_action display_value="Zoho Assist">45b8c7e3db96cb40360eda11cf96193d</sys_ui_action>
         <sys_update_name>sys_ui_action_role_7ae3c28adb360b00360eda11cf96191c</sys_update_name>

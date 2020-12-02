@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<record_update table="sys_ui_script">
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_ui_script">
     <sys_ui_script action="INSERT_OR_UPDATE">
         <active>true</active>
         <description/>
@@ -13,17 +12,16 @@ return j.call(r(a),c)})),b))for(;i>h;h++)b(a[h],c,g?d:d.call(a[h],h,b(a[h],c)));
         <sys_class_name>sys_ui_script</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2017-11-14 10:13:40</sys_created_on>
-        <sys_customer_update>true</sys_customer_update>
         <sys_id>8c49c7e3db96cb40360eda11cf961945</sys_id>
         <sys_mod_count>2</sys_mod_count>
         <sys_name>x_manen_assist.jquery</sys_name>
         <sys_package display_value="Assist" source="x_manen_assist">2ef5cf23db96cb40360eda11cf9619f3</sys_package>
         <sys_policy/>
-        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
         <sys_scope display_value="Assist">2ef5cf23db96cb40360eda11cf9619f3</sys_scope>
         <sys_update_name>sys_ui_script_8c49c7e3db96cb40360eda11cf961945</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
         <sys_updated_on>2017-11-14 10:32:28</sys_updated_on>
+        <ui_type/>
         <use_scoped_format>false</use_scoped_format>
     </sys_ui_script>
 </record_update>
