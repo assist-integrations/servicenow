@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_documentation element="u_resolution_code" label="Resolution Code" language="en" table="x_manen_assist_assist_incident_mapping">
+        <sys_documentation action="INSERT_OR_UPDATE">
+            <element>u_resolution_code</element>
+            <help/>
+            <hint/>
+            <label>Resolution Code</label>
+            <language>en</language>
+            <name>x_manen_assist_assist_incident_mapping</name>
+            <plural>Resolution Codes</plural>
+            <sys_class_name>sys_documentation</sys_class_name>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2021-05-21 05:19:20</sys_created_on>
+            <sys_id>2b5f567807dc30106759f8ed7c1ed0d3</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>Resolution Code</sys_name>
+            <sys_package display_value="Assist" source="x_manen_assist">2ef5cf23db96cb40360eda11cf9619f3</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="Assist">2ef5cf23db96cb40360eda11cf9619f3</sys_scope>
+            <sys_update_name>sys_documentation_x_manen_assist_assist_incident_mapping_u_resolution_code_en</sys_update_name>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2021-05-21 05:19:20</sys_updated_on>
+            <url/>
+            <url_target/>
+        </sys_documentation>
+    </sys_documentation>
+</record_update>
