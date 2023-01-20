@@ -5,14 +5,11 @@
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2017-11-30 07:03:16</sys_created_on>
         <sys_id>6a867cb0db364700360eda11cf9619de</sys_id>
-        <sys_mod_count>27</sys_mod_count>
         <sys_name>Assist System Category</sys_name>
         <sys_package display_value="Assist" source="x_manen_assist">2ef5cf23db96cb40360eda11cf9619f3</sys_package>
         <sys_policy/>
         <sys_scope display_value="Assist">2ef5cf23db96cb40360eda11cf9619f3</sys_scope>
         <sys_update_name>sys_properties_category_6a867cb0db364700360eda11cf9619de</sys_update_name>
-        <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2021-05-21 05:54:39</sys_updated_on>
         <title><![CDATA[<div style="margin-top: 30px; margin-bottom: 35px; padding-bottom: 0; margin-left: 30px;">
 <div style="display: table-cell; vertical-align: middle; height: 100%; text-align: left;">
 <div style="float: left; margin-left: 20px; color: #333;">
@@ -48,7 +45,7 @@
 </li><li>
 <p><span style="font-family: &#39;times new roman&#39;, times; font-size: 10pt;">Enter the <strong>API key</strong> provided in Zoho Assist.</span></p>
 </li><li>
-<p><span style="font-family: &#39;times new roman&#39;, times; font-size: 10pt;">Check  <strong>Are you using Zoho Assist EU?</strong> if you have account on <strong>assist.zoho.eu</strong>.</span></p>
+<p><span style="font-family: &#39;times new roman&#39;, times; font-size: 10pt;">Select the <strong>Data center</strong> in which you have the Zoho Assist account.</span></p>
 </li></ul>
 <p><span style="font-family: &#39;times new roman&#39;, times;"> </span></p>
 <p><span style="font-family: &#39;times new roman&#39;, times;"> </span></p>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_properties">
+    <sys_properties action="INSERT_OR_UPDATE">
+        <choices>COM=com,EU=eu,IN=in</choices>
+        <description>Kindly select the Data Center location of your Zoho Assist account as mentioned here COM / EU / IN :</description>
+        <ignore_cache>true</ignore_cache>
+        <is_private>false</is_private>
+        <name>x_manen_assist.assist_dc</name>
+        <read_roles>admin,x_manen_assist.AssistAdmin,x_manen_assist.AssistModerator</read_roles>
+        <suffix>assist_dc</suffix>
+        <sys_class_name>sys_properties</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2023-01-20 14:12:46</sys_created_on>
+        <sys_id>b22920c92f20211063245fd92799b6f7</sys_id>
+        <sys_name>x_manen_assist.assist_dc</sys_name>
+        <sys_package display_value="Assist" source="x_manen_assist">2ef5cf23db96cb40360eda11cf9619f3</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Assist">2ef5cf23db96cb40360eda11cf9619f3</sys_scope>
+        <sys_update_name>sys_properties_b22920c92f20211063245fd92799b6f7</sys_update_name>
+        <type>choicelist</type>
+        <value/>
+        <write_roles>admin,x_manen_assist.AssistAdmin,x_manen_assist.AssistModerator</write_roles>
+    </sys_properties>
+    <sys_translated_text action="delete_multiple" query="documentkey=b22920c92f20211063245fd92799b6f7"/>
+</record_update>

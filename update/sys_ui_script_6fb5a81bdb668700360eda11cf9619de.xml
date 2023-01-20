@@ -3,6 +3,7 @@
         <active>true</active>
         <description/>
         <global>false</global>
+        <ignore_in_now_experience>false</ignore_in_now_experience>
         <name>x_manen_assist.AssistUtilScript</name>
         <script><![CDATA[var assist_application_role_txt = "You cannot access this page as you do not have the required administrator privileges.";
 var assist_application_admin_role_txt = "You can access this page only if your Admin assigns you a role.";
@@ -91,12 +92,10 @@ function getIncidentRecord(sys_id) {
 	
 	inc = new GlideAjax("x_manen_assist.AssistRestAPIHandler");
 	inc.addParam("sysparm_name","getProperty");
-	inc.addParam("property_name","x_manen_assist.is_eu");
+	inc.addParam("property_name","x_manen_assist.assist_dc");
 	inc.getXML(function(response){
 		incident_detail.domain = response.responseXML.documentElement.getAttribute("answer");
-		if(incident_detail.domain==true){
-			incident_detail.domain = "eu";
-		}else{
+		if(!incident_detail.domain){
 			incident_detail.domain = "com";
 		}
 	});
@@ -207,14 +206,11 @@ function getAssistUIComponent(){
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2017-11-25 13:58:27</sys_created_on>
         <sys_id>6fb5a81bdb668700360eda11cf9619de</sys_id>
-        <sys_mod_count>108</sys_mod_count>
         <sys_name>x_manen_assist.AssistUtilScript</sys_name>
         <sys_package display_value="Assist" source="x_manen_assist">2ef5cf23db96cb40360eda11cf9619f3</sys_package>
         <sys_policy/>
         <sys_scope display_value="Assist">2ef5cf23db96cb40360eda11cf9619f3</sys_scope>
         <sys_update_name>sys_ui_script_6fb5a81bdb668700360eda11cf9619de</sys_update_name>
-        <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2020-12-02 07:26:15</sys_updated_on>
         <ui_type>0</ui_type>
         <use_scoped_format>false</use_scoped_format>
     </sys_ui_script>
